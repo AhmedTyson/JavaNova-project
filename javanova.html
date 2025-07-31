@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaNova Academy - Innovating Java Education</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF8C42;
+            --deep-purple: #8B5CF6;
+            --dark-bg: #0A0A18;
+            --card-bg: #121230;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 140, 66, 0.1) 0%, transparent 20%);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-orange), var(--deep-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-purple));
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(10, 10, 24, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-orange), var(--deep-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--deep-purple));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 200px 0 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ff8c42" fill-opacity="0.1" d="M0,224L48,218.7C96,213,192,203,288,186.7C384,171,480,149,576,149.3C672,149,768,171,864,170.7C960,171,1056,149,1152,128C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat, linear-gradient(135deg, rgba(10, 10, 24, 0.9), rgba(10, 10, 24, 0.95));
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--white), var(--primary-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ddd;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--deep-purple);
+            box-shadow: none;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--deep-purple), transparent 70%);
+            filter: blur(50px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--card-bg);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-mission {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .about-mission h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-orange);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .benefit-card i {
+            font-size: 2rem;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-orange), var(--deep-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        /* Courses Section */
+        .courses {
+            background-color: var(--dark-bg);
+        }
+
+        .courses-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--deep-purple);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-purple));
+            border-color: transparent;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .course-header {
+            padding: 25px;
+            background: rgba(139, 92, 246, 0.1);
+            border-bottom: 2px solid var(--deep-purple);
+        }
+
+        .course-level {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .beginner {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        .intermediate {
+            background: rgba(33, 150, 243, 0.2);
+            color: #2196F3;
+        }
+
+        .advanced {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+        }
+
+        .specialization {
+            background: rgba(255, 193, 7, 0.2);
+            color: #FFC107;
+        }
+
+        .course-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-topics {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .course-topics li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+        }
+
+        .course-topics li:before {
+            content: "✓";
+            color: var(--primary-orange);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, rgba(10, 10, 24, 0.9), rgba(20, 15, 50, 0.95));
+            position: relative;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            font-size: 2rem;
+            color: var(--primary-orange);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: var(--card-bg);
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .toggle-label {
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(139, 92, 246, 0.3);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-purple));
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: var(--dark-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-purple));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 20px 0;
+            background: linear-gradient(90deg, var(--primary-orange), var(--deep-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pricing-features li:before {
+            content: "✓";
+            color: var(--primary-orange);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Instructor Section */
+        .instructors {
+            background-color: var(--dark-bg);
+        }
+
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .instructor-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .instructor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .instructor-img {
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-purple));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instructor-img::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .instructor-img::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .instructor-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .instructor-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .instructor-company {
+            color: var(--primary-orange);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .instructor-bio {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, rgba(10, 10, 24, 0.9), rgba(20, 15, 50, 0.95));
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-text p {
+            color: #aaa;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-purple));
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050510;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--deep-purple));
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-orange);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .copyright a {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .hero {
+                padding: 150px 0 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .price {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation Keyframes */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">JN</div>
+                    <div class="logo-text">JavaNova</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#instructors">Instructors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>JavaNova Academy</h1>
+                <p>Innovating Java Education for Tomorrow's Developers</p>
+                <div class="hero-btns">
+                    <a href="#pricing" class="btn">Start Learning Java Today</a>
+                    <a href="#courses" class="btn btn-secondary">Explore Courses</a>
+                </div>
+            </div>
+            <div class="hero-image floating">
+                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="150" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-dasharray="10,5"/>
+                    <circle cx="250" cy="250" r="100" fill="none" stroke="#FF8C42" stroke-width="2" stroke-dasharray="8,4"/>
+                    <circle cx="250" cy="250" r="50" fill="#FF8C42" opacity="0.7"/>
+                    <path d="M150,250 A100,100 0 1,1 350,250" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+                    <path d="M250,150 A100,100 0 0,1 250,350" fill="none" stroke="#FF8C42" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About JavaNova</h2>
+                <p>We're transforming Java education with cutting-edge curriculum and industry-focused training</p>
+            </div>
+            <div class="about-content">
+                <div class="about-mission">
+                    <h3>Our Mission</h3>
+                    <p>Empowering the next generation of Java developers through innovative, hands-on learning experiences that bridge the gap between academic knowledge and industry requirements.</p>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h4>Expert Instructors</h4>
+                            <p>10+ years industry experience</p>
+                        </div>
+                        <div class="benefit-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>Hands-on Projects</h4>
+                            <p>Real-world coding challenges</p>
+                        </div>
+                        <div class="benefit-card">
+                            <i class="fas fa-briefcase"></i>
+                            <h4>Career Support</h4>
+                            <p>Job placement assistance</p>
+                        </div>
+                        <div class="benefit-card">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h4>Flexible Learning</h4>
+                            <p>Learn at your own pace</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <p>Job Placement Rate</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">40%</div>
+                            <p>Average Salary Increase</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <p>Graduates</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Courses</h2>
+                <p>Structured learning paths for all skill levels</p>
+            </div>
+            
+            <div class="courses-filter">
+                <button class="filter-btn active">All Tracks</button>
+                <button class="filter-btn">Beginner</button>
+                <button class="filter-btn">Intermediate</button>
+                <button class="filter-btn">Advanced</button>
+                <button class="filter-btn">Specialization</button>
+            </div>
+            
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-level beginner">Beginner</span>
+                        <h3>Java Fundamentals</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Master the building blocks of Java programming</p>
+                        <ul class="course-topics">
+                            <li>Syntax & Structure</li>
+                            <li>Data Types & Variables</li>
+                            <li>Control Flow Statements</li>
+                            <li>Methods & Functions</li>
+                            <li>Arrays & Collections</li>
+                        </ul>
+                        <a href="#" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-level intermediate">Intermediate</span>
+                        <h3>OOP Concepts</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Deep dive into Object-Oriented Programming</p>
+                        <ul class="course-topics">
+                            <li>Classes & Objects</li>
+                            <li>Inheritance & Polymorphism</li>
+                            <li>Encapsulation & Abstraction</li>
+                            <li>Interfaces & Abstract Classes</li>
+                            <li>Design Patterns</li>
+                        </ul>
+                        <a href="#" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-level advanced">Advanced</span>
+                        <h3>Spring Framework</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Build enterprise-grade applications</p>
+                        <ul class="course-topics">
+                            <li>Spring Boot & MVC</li>
+                            <li>Dependency Injection</li>
+                            <li>RESTful Web Services</li>
+                            <li>Spring Security</li>
+                            <li>Database Integration</li>
+                        </ul>
+                        <a href="#" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <span class="course-level specialization">Specialization</span>
+                        <h3>Android Development</h3>
+                    </div>
+                    <div class="course-content">
+                        <p>Create mobile applications with Java</p>
+                        <ul class="course-topics">
+                            <li>Android Studio Setup</li>
+                            <li>UI/UX Design Principles</li>
+                            <li>Activities & Fragments</li>
+                            <li>API Integration</li>
+                            <li>Publishing to Play Store</li>
+                        </ul>
+                        <a href="#" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Learning Experience</h2>
+                <p>Why JavaNova stands out from traditional learning</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>24/7 Platform Access</h3>
+                    <p>Cloud-based coding environments accessible anytime, anywhere with internet connection</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Live Coding Sessions</h3>
+                    <p>Interactive sessions with industry experts solving real-world problems</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>1-on-1 Mentorship</h3>
+                    <p>Personalized guidance from experienced Java developers</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Project Portfolio</h3>
+                    <p>Build a portfolio of real-world applications to showcase to employers</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Industry Certification</h3>
+                    <p>Globally recognized certification upon course completion</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Career Support</h3>
+                    <p>Resume reviews, interview prep, and job placement assistance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pricing Plans</h2>
+                <p>Flexible options to fit your learning journey</p>
+            </div>
+            
+            <div class="pricing-toggle">
+                <span class="toggle-label">Monthly</span>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span class="toggle-label">Annual (Save 20%)</span>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$29<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Java Fundamentals Course</li>
+                        <li>Basic project assignments</li>
+                        <li>Community forum access</li>
+                        <li>Email support</li>
+                        <li>Certificate of completion</li>
+                    </ul>
+                    <a href="#" class="btn">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Professional</h3>
+                    <div class="price">$79<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>All Starter features</li>
+                        <li>Intermediate & Advanced courses</li>
+                        <li>Live mentorship sessions (2 hours/month)</li>
+                        <li>Career guidance and resume review</li>
+                        <li>Priority support</li>
+                        <li>Advanced project portfolio</li>
+                    </ul>
+                    <a href="#" class="btn">Choose Plan</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Expert</h3>
+                    <div class="price">$129<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>All Professional features</li>
+                        <li>1-on-1 mentoring (4 hours/month)</li>
+                        <li>Job placement guarantee</li>
+                        <li>Lifetime access to all updates</li>
+                        <li>Interview preparation</li>
+                        <li>Industry networking events</li>
+                    </ul>
+                    <a href="#" class="btn">Choose Plan</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul class="pricing-features">
+                        <li>Bulk student licenses</li>
+                        <li>Custom curriculum development</li>
+                        <li>Dedicated account manager</li>
+                        <li>Advanced analytics</li>
+                        <li>Team collaboration tools</li>
+                        <li>On-demand training sessions</li>
+                    </ul>
+                    <a href="#contact" class="btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="instructors" id="instructors">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Instructors</h2>
+                <p>Learn from industry experts with real-world experience</p>
+            </div>
+            
+            <div class="instructor-grid">
+                <div class="instructor-card">
+                    <div class="instructor-img"></div>
+                    <div class="instructor-info">
+                        <h3>Alex Morgan</h3>
+                        <div class="instructor-company">Former Google, 12+ years experience</div>
+                        <p class="instructor-bio">Java architect specializing in scalable systems and microservices. Author of "Java Performance Optimization"</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-img"></div>
+                    <div class="instructor-info">
+                        <h3>Sarah Johnson</h3>
+                        <div class="instructor-company">Former Amazon, 10+ years experience</div>
+                        <p class="instructor-bio">Enterprise Java specialist with focus on cloud-native applications and serverless architectures</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-img"></div>
+                    <div class="instructor-info">
+                        <h3>Michael Chen</h3>
+                        <div class="instructor-company">Former Microsoft, 15+ years experience</div>
+                        <p class="instructor-bio">Java framework expert and core contributor to several open-source Java projects</p>
+                    </div>
+                </div>
+                
+                <div class="instructor-card">
+                    <div class="instructor-img"></div>
+                    <div class="instructor-info">
+                        <h3>Priya Sharma</h3>
+                        <div class="instructor-company">Former Oracle, 11+ years experience</div>
+                        <p class="instructor-bio">Java language specialist with deep expertise in JVM internals and performance tuning</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Have questions? We're here to help</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Our Location</h4>
+                            <p>123 Tech Park Avenue, San Francisco, CA 94103</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone Number</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email Address</h4>
+                            <p>info@javanova.academy</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Office Hours</h4>
+                            <p>Monday-Friday: 9:00 AM - 6:00 PM (PST)</p>
+                            <p>Response Time: Within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="logo">
+                            <div class="logo-icon">JN</div>
+                            <div class="logo-text">JavaNova</div>
+                        </div>
+                    </div>
+                    <p>JavaNova Academy is a premier Java programming education platform dedicated to training the next generation of software developers through innovative curriculum and hands-on learning experiences.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#instructors">Instructors</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="#">Java Fundamentals</a></li>
+                        <li><a href="#">Object-Oriented Programming</a></li>
+                        <li><a href="#">Spring Framework</a></li>
+                        <li><a href="#">Microservices Architecture</a></li>
+                        <li><a href="#">Android Development</a></li>
+                        <li><a href="#">Big Data with Java</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Technical Support</a></li>
+                        <li><a href="#">Career Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 JavaNova Academy. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #FF8C42;"></i> for future Java developers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Mobile Menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.querySelector('i').classList.toggle('fa-bars');
+                    menuToggle.querySelector('i').classList.toggle('fa-times');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Sticky Header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+        
+        // Pricing Toggle Switch
+        const toggleSwitch = document.querySelector('.toggle-switch input');
+        const monthlyPrices = [29, 79, 129];
+        const annualPrices = [23.2, 63.2, 103.2]; // 20% discount
+        
+        toggleSwitch.addEventListener('change', function() {
+            const prices = document.querySelectorAll('.price');
+            
+            if (this.checked) {
+                prices.forEach((price, index) => {
+                    if (index < 3) {
+                        price.innerHTML = `$${annualPrices[index]}<span>/month</span>`;
+                    }
+                });
+            } else {
+                prices.forEach((price, index) => {
+                    if (index < 3) {
+                        price.innerHTML = `$${monthlyPrices[index]}<span>/month</span>`;
+                    }
+                });
+            }
+        });
+        
+        // Course Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // In a real implementation, you would filter courses here
+                // For this demo, we'll just show an alert
+                alert(`Filtering courses by: ${button.textContent}`);
+            });
+        });
+        
+        // Form Validation
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+        
+        // Animated Counters
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        function animateCounter(element) {
+            const target = parseInt(element.textContent.replace('%', '').replace('+', ''));
+            let count = 0;
+            
+            const interval = setInterval(() => {
+                const increment = Math.ceil(target / speed);
+                count += increment;
+                
+                if (count >= target) {
+                    count = target;
+                    clearInterval(interval);
+                }
+                
+                element.textContent = element.textContent.includes('%') ? 
+                    count + '%' : 
+                    element.textContent.includes('+') ? 
+                    count + '+' : 
+                    count;
+            }, 10);
+        }
+    </script>
+</body>
+</html>
