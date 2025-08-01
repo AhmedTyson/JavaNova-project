@@ -1,4 +1,4 @@
-/* ===== BOOTSTRAP 5 COMPATIBLE JAVASCRIPT WITH ALL FEATURES ===== */
+/* ===== BOOTSTRAP 5 + ENHANCED MOBILE MENU JAVASCRIPT ===== */
 
 // DOM Content Loaded Event
 document.addEventListener("DOMContentLoaded", function () {
@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize all features
   initializeNavigation();
   initializeThemeToggle();
+  initializeMobileMenu(); // New mobile menu functionality
   initializePricingToggle();
   initializeCourseFilters();
   initializeAnimatedCounters();
@@ -18,24 +19,158 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeStickyHeader();
 });
 
-/* ===== NAVIGATION FUNCTIONALITY ===== */
-function initializeNavigation() {
-  // Bootstrap 5 handles navbar collapse automatically
-  // Add smooth scrolling for navigation links
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
+/* ===== ENHANCED MOBILE MENU FUNCTIONALITY ===== */
+function initializeMobileMenu() {
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+  const mobileMenu = document.getElementById('mobileMenuNav');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  const body = document.body;
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+  if (!mobileMenuToggle || !mobileMenu || !mobileMenuOverlay) return;
+
+  // Open mobile menu
+  function openMobileMenu() {
+    mobileMenu.classList.add('active');
+    mobileMenuOverlay.classList.add('active');
+    mobileMenuToggle.classList.add('active');
+    body.classList.add('mobile-menu-open');
+
+    // Set aria attributes for accessibility
+    mobileMenuToggle.setAttribute('aria-expanded', 'true');
+
+    // Add staggered animation to menu items
+    mobileNavLinks.forEach((link, index) => {
+      link.style.transitionDelay = `${(index + 1) * 0.1}s`;
+      link.style.opacity = '0';
+      link.style.transform = 'translateX(-20px)';
+
+      setTimeout(() => {
+        link.style.opacity = '1';
+        link.style.transform = 'translateX(0)';
+      }, (index + 1) * 100);
+    });
+  }
+
+  // Close mobile menu
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('active');
+    mobileMenuOverlay.classList.remove('active');
+    mobileMenuToggle.classList.remove('active');
+    body.classList.remove('mobile-menu-open');
+
+    // Set aria attributes for accessibility
+    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+
+    // Reset menu item animations
+    mobileNavLinks.forEach((link) => {
+      link.style.transitionDelay = '0s';
+      link.style.opacity = '1';
+      link.style.transform = 'translateX(0)';
+    });
+  }
+
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    if (mobileMenu.classList.contains('active')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  // Event listeners
+  mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+  mobileMenuClose.addEventListener('click', closeMobileMenu);
+  mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+  // Close menu when clicking on navigation links
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
 
-      // Close mobile menu if open (Bootstrap 5 way)
-      const navbarCollapse = document.querySelector('.navbar-collapse');
-      if (navbarCollapse.classList.contains('show')) {
-        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-        if (bsCollapse) {
-          bsCollapse.hide();
+      // Get target section
+      const targetId = link.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        // Close menu first
+        closeMobileMenu();
+
+        // Smooth scroll to target after menu closes
+        setTimeout(() => {
+          const headerOffset = 80;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }, 400); // Wait for menu to close
+      }
+    });
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 991.98 && mobileMenu.classList.contains('active')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Focus management for accessibility
+  mobileMenuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMobileMenu();
+    }
+  });
+
+  // Trap focus within mobile menu when open
+  function trapFocus(e) {
+    if (!mobileMenu.classList.contains('active')) return;
+
+    const focusableElements = mobileMenu.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
         }
       }
+    }
+  }
+
+  document.addEventListener('keydown', trapFocus);
+}
+
+/* ===== NAVIGATION FUNCTIONALITY (Enhanced for Desktop) ===== */
+function initializeNavigation() {
+  // Desktop navigation smooth scrolling
+  const desktopNavLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
+
+  desktopNavLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
 
       // Smooth scroll to target
       const targetId = this.getAttribute('href');
@@ -494,4 +629,4 @@ if (!window.IntersectionObserver) {
   });
 }
 
-console.log('🚀 JavaNova Academy - All features initialized successfully!');
+console.log('🚀 JavaNova Academy - Enhanced Mobile Menu initialized successfully!');
