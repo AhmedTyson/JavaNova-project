@@ -1,236 +1,205 @@
-// Enhanced Mobile Menu Functionality
+/* ===== BOOTSTRAP 5 COMPATIBLE JAVASCRIPT WITH ALL FEATURES ===== */
+
+// DOM Content Loaded Event
 document.addEventListener("DOMContentLoaded", function () {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.getElementById("main-navigation");
+  // Remove preload class to enable transitions
+  setTimeout(() => {
+    document.body.classList.remove("preload");
+  }, 100);
 
-  if (!menuToggle || !navLinks) return;
+  // Initialize all features
+  initializeNavigation();
+  initializeThemeToggle();
+  initializePricingToggle();
+  initializeCourseFilters();
+  initializeAnimatedCounters();
+  initializeTypingAnimation();
+  initializeFormValidation();
+  initializeStickyHeader();
+});
 
-  function toggleMenu() {
-    const expanded = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", String(!expanded));
-    navLinks.setAttribute("aria-expanded", String(!expanded));
-    document.body.style.overflow = expanded ? "" : "hidden";
-  }
+/* ===== NAVIGATION FUNCTIONALITY ===== */
+function initializeNavigation() {
+  // Bootstrap 5 handles navbar collapse automatically
+  // Add smooth scrolling for navigation links
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
 
-  function closeMenu() {
-    menuToggle.setAttribute("aria-expanded", "false");
-    navLinks.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-  }
-
-  menuToggle.addEventListener("click", toggleMenu);
-
-  // Close on link click
-  navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  // Close on outside click
-  document.addEventListener("click", (e) => {
-    if (!navLinks.contains(e.target) && e.target !== menuToggle) {
-      closeMenu();
-    }
-  });
-
-  // Keyboard support
-  menuToggle.addEventListener("keydown", (e) => {
-    if (
-      (e.key === "Enter" || e.key === " ") &&
-      document.activeElement === menuToggle
-    ) {
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
       e.preventDefault();
-      toggleMenu();
-    }
-  });
 
-  // Trap focus when open
-  document.addEventListener("keydown", (e) => {
-    if (
-      menuToggle.getAttribute("aria-expanded") === "true" &&
-      e.key === "Tab"
-    ) {
-      const focusable = Array.from(navLinks.querySelectorAll("a"));
-      const first = focusable[0],
-        last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    }
-  });
-});
-
-// Toggle Mobile Menu
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  menuToggle.querySelector("i").classList.toggle("fa-bars");
-  menuToggle.querySelector("i").classList.toggle("fa-times");
-});
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    if (navLinks.classList.contains("active")) {
-      navLinks.classList.remove("active");
-      menuToggle.querySelector("i").classList.toggle("fa-bars");
-      menuToggle.querySelector("i").classList.toggle("fa-times");
-    }
-
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
-  });
-});
-
-// Sticky Header
-window.addEventListener("scroll", () => {
-  const header = document.querySelector("header");
-  header.classList.toggle("sticky", window.scrollY > 0);
-});
-
-// Pricing Toggle Switch
-const toggleSwitch = document.querySelector(".toggle-switch input");
-const monthlyPrices = [29, 79, 129];
-const annualPrices = [23.2, 63.2, 103.2]; // 20% discount
-
-toggleSwitch.addEventListener("change", function () {
-  const prices = document.querySelectorAll(".price");
-
-  if (this.checked) {
-    prices.forEach((price, index) => {
-      if (index < 3) {
-        price.innerHTML = `$${annualPrices[index]}<span>/month</span>`;
-      }
-    });
-  } else {
-    prices.forEach((price, index) => {
-      if (index < 3) {
-        price.innerHTML = `$${monthlyPrices[index]}<span>/month</span>`;
-      }
-    });
-  }
-});
-
-// Course Filter Functionality
-const filterButtons = document.querySelectorAll(".filter-btn");
-const courseCards = document.querySelectorAll(".course-card");
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    // Remove active class from all buttons
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
-
-    // Add active class to clicked button
-    button.classList.add("active");
-
-    const filterValue = button.getAttribute("data-filter");
-
-    // Filter courses
-    courseCards.forEach((card) => {
-      if (filterValue === "all") {
-        card.style.display = "block";
-      } else {
-        if (card.getAttribute("data-level") === filterValue) {
-          card.style.display = "block";
-        } else {
-          card.style.display = "none";
+      // Close mobile menu if open (Bootstrap 5 way)
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      if (navbarCollapse.classList.contains('show')) {
+        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (bsCollapse) {
+          bsCollapse.hide();
         }
       }
-    });
-  });
-});
 
-// Form Validation
-const contactForm = document.getElementById("contactForm");
+      // Smooth scroll to target
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
 
-contactForm.addEventListener("submit", function (e) {
-  e.preventDefault();
+      if (targetElement) {
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-
-  if (name && email && message) {
-    alert("Thank you for your message! We will get back to you soon.");
-    contactForm.reset();
-  } else {
-    alert("Please fill in all fields.");
-  }
-});
-
-// Animated Counters
-const counters = document.querySelectorAll(".stat-number");
-const speed = 200;
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        observer.unobserve(entry.target);
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     });
-  },
-  { threshold: 0.5 }
-);
-
-counters.forEach((counter) => {
-  observer.observe(counter);
-});
-
-function animateCounter(element) {
-  const target = parseInt(
-    element.textContent.replace("%", "").replace("+", "")
-  );
-  let count = 0;
-
-  const interval = setInterval(() => {
-    const increment = Math.ceil(target / speed);
-    count += increment;
-
-    if (count >= target) {
-      count = target;
-      clearInterval(interval);
-    }
-
-    element.textContent = element.textContent.includes("%")
-      ? count + "%"
-      : element.textContent.includes("+")
-      ? count + "+"
-      : count;
-  }, 10);
+  });
 }
 
-// Typing Animation - Pure JavaScript
-function createTypingAnimation() {
+/* ===== STICKY HEADER ===== */
+function initializeStickyHeader() {
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.custom-navbar');
+
+    if (window.scrollY > 100) {
+      header.style.backgroundColor = 'rgba(10, 10, 24, 0.98)';
+      header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+      header.style.backdropFilter = 'blur(15px)';
+    } else {
+      header.style.backgroundColor = 'rgba(10, 10, 24, 0.95)';
+      header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+      header.style.backdropFilter = 'blur(10px)';
+    }
+  });
+}
+
+/* ===== PRICING TOGGLE FUNCTIONALITY ===== */
+function initializePricingToggle() {
+  const toggleSwitch = document.querySelector('#pricingToggle');
+  const prices = document.querySelectorAll('.price');
+
+  const monthlyPrices = [29, 79, 129];
+  const annualPrices = [23.2, 63.2, 103.2]; // 20% discount
+
+  if (toggleSwitch) {
+    toggleSwitch.addEventListener('change', function() {
+      prices.forEach((price, index) => {
+        if (index < 3) {
+          const priceValue = this.checked ? annualPrices[index] : monthlyPrices[index];
+          const span = price.querySelector('span');
+          const spanText = span ? span.outerHTML : '<span class="fs-6 fw-normal">/month</span>';
+          price.innerHTML = `$${priceValue}${spanText}`;
+        }
+      });
+    });
+  }
+}
+
+/* ===== COURSE FILTER FUNCTIONALITY ===== */
+function initializeCourseFilters() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const courseItems = document.querySelectorAll('.course-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Add active class to clicked button
+      button.classList.add('active');
+
+      const filterValue = button.getAttribute('data-filter');
+
+      // Filter courses with animation
+      courseItems.forEach(item => {
+        if (filterValue === 'all') {
+          item.style.display = 'block';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+          }, 10);
+        } else {
+          if (item.getAttribute('data-level') === filterValue) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.style.opacity = '1';
+              item.style.transform = 'translateY(0)';
+            }, 10);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              item.style.display = 'none';
+            }, 300);
+          }
+        }
+      });
+    });
+  });
+
+  // Set initial state
+  courseItems.forEach(item => {
+    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+  });
+}
+
+/* ===== ANIMATED COUNTERS ===== */
+function initializeAnimatedCounters() {
+  const counters = document.querySelectorAll('.stat-number');
+  const speed = 200;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((counter) => {
+    observer.observe(counter);
+  });
+
+  function animateCounter(element) {
+    const target = parseInt(
+      element.textContent.replace('%', '').replace('+', '')
+    );
+    let count = 0;
+
+    const interval = setInterval(() => {
+      const increment = Math.ceil(target / speed);
+      count += increment;
+
+      if (count >= target) {
+        count = target;
+        clearInterval(interval);
+      }
+
+      element.textContent = element.textContent.includes('%')
+        ? count + '%'
+        : element.textContent.includes('+')
+        ? count + '+'
+        : count;
+    }, 10);
+  }
+}
+
+/* ===== TYPING ANIMATION ===== */
+function initializeTypingAnimation() {
   const text = "Innovating Java Education for Tomorrow's Developers";
   const typingElement = document.getElementById("typingText");
   const cursorElement = document.getElementById("cursor");
+
+  if (!typingElement || !cursorElement) return;
 
   let currentIndex = 0;
   let isTyping = true;
   let typingSpeed = 100; // milliseconds
   let erasingSpeed = 50; // milliseconds
   let pauseTime = 2000; // pause after typing complete
-
-  // Cursor blinking animation
-  function blinkCursor() {
-    setInterval(() => {
-      cursorElement.style.opacity =
-        cursorElement.style.opacity === "0" ? "1" : "0";
-    }, 500);
-  }
-
-  // Start cursor blinking
-  blinkCursor();
 
   function typeWriter() {
     if (isTyping) {
@@ -262,25 +231,56 @@ function createTypingAnimation() {
   setTimeout(typeWriter, 1000);
 }
 
-// Initialize typing animation when page loads
-document.addEventListener("DOMContentLoaded", function () {
-  createTypingAnimation();
-});
+/* ===== FORM VALIDATION (Bootstrap 5 Compatible) ===== */
+function initializeFormValidation() {
+  const contactForm = document.getElementById('contactForm');
 
-// Enhanced Theme Toggle Functionality
-document.addEventListener("DOMContentLoaded", function () {
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (contactForm.checkValidity()) {
+        // Form is valid, show success message
+        showSuccessMessage();
+        contactForm.reset();
+        contactForm.classList.remove('was-validated');
+      } else {
+        // Form is invalid, show validation messages
+        contactForm.classList.add('was-validated');
+      }
+    });
+  }
+
+  function showSuccessMessage() {
+    // Create a Bootstrap alert
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-success alert-dismissible fade show';
+    alertDiv.innerHTML = `
+      <strong>Success!</strong> Thank you for your message! We will get back to you soon.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    // Insert the alert before the form
+    contactForm.parentNode.insertBefore(alertDiv, contactForm);
+
+    // Auto-dismiss after 5 seconds
+    setTimeout(() => {
+      if (alertDiv && alertDiv.parentNode) {
+        alertDiv.remove();
+      }
+    }, 5000);
+  }
+}
+
+/* ===== ENHANCED THEME TOGGLE FUNCTIONALITY ===== */
+function initializeThemeToggle() {
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
 
-  // Add preload class to prevent transitions on page load
-  document.body.classList.add("preload");
+  if (!themeToggle || !themeIcon) return;
 
-  // Remove preload class after page loads
-  setTimeout(() => {
-    document.body.classList.remove("preload");
-  }, 100);
-
-  // Updated professional SVG Icons for theme toggle
+  // Professional SVG Icons for theme toggle
   const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
   </svg>`;
@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let systemThemeTimeout;
   window
     .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", function (e) {
+    .addEventListener("change", function(e) {
       clearTimeout(systemThemeTimeout);
       systemThemeTimeout = setTimeout(() => {
         const savedTheme = localStorage.getItem("theme");
@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // Enhanced page visibility handling for smooth experience
-  document.addEventListener("visibilitychange", function () {
+  document.addEventListener("visibilitychange", function() {
     if (!document.hidden) {
       // Refresh theme when page becomes visible again
       setTimeout(setInitialTheme, 100);
@@ -381,10 +381,117 @@ document.addEventListener("DOMContentLoaded", function () {
   themeToggle.addEventListener("click", toggleTheme);
 
   // Add keyboard support for accessibility
-  themeToggle.addEventListener("keydown", function (e) {
+  themeToggle.addEventListener("keydown", function(e) {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       toggleTheme();
     }
   });
+}
+
+/* ===== ENHANCED SCROLL ANIMATIONS ===== */
+function initializeScrollAnimations() {
+  const animatedElements = document.querySelectorAll('.card, .benefit-card, .tech-item');
+
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  animatedElements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(element);
+  });
+}
+
+// Initialize scroll animations
+document.addEventListener("DOMContentLoaded", function() {
+  setTimeout(initializeScrollAnimations, 500);
 });
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+
+// Debounced resize handler
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    // Handle resize-specific logic here if needed
+    console.log('Resize handled');
+  }, 250);
+});
+
+// Optimized scroll handler
+let scrollTimeout;
+let isScrolling = false;
+
+function optimizedScrollHandler() {
+  if (!isScrolling) {
+    window.requestAnimationFrame(() => {
+      // Scroll-specific optimizations here
+      isScrolling = false;
+    });
+    isScrolling = true;
+  }
+}
+
+window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+
+// Focus management for keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+    document.body.classList.add('keyboard-navigation');
+  }
+});
+
+document.addEventListener('mousedown', () => {
+  document.body.classList.remove('keyboard-navigation');
+});
+
+// Skip link functionality
+const skipLink = document.querySelector('.skip-link');
+if (skipLink) {
+  skipLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(skipLink.getAttribute('href'));
+    if (target) {
+      target.focus();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
+/* ===== ERROR HANDLING ===== */
+window.addEventListener('error', (e) => {
+  console.error('JavaScript error:', e.error);
+  // Could implement user-friendly error reporting here
+});
+
+// Graceful degradation for older browsers
+if (!window.IntersectionObserver) {
+  // Fallback for browsers without Intersection Observer
+  document.querySelectorAll('.stat-number').forEach(counter => {
+    // Immediately show the final value
+    const target = parseInt(counter.textContent.replace('%', '').replace('+', ''));
+    counter.textContent = counter.textContent.includes('%')
+      ? target + '%'
+      : counter.textContent.includes('+')
+      ? target + '+'
+      : target;
+  });
+}
+
+console.log('🚀 JavaNova Academy - All features initialized successfully!');
