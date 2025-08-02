@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff8c42">
+    <meta name="description" content="JavaNova Academy - Master Java development with expert instructors and comprehensive courses.">
+    <title>JavaNova Academy - Master Java Development</title>
+
+    <!-- Bootstrap 5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- LAYOUT-FIXED Theme System CSS -->
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body class="preload">
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenuNav">
+        <!-- Mobile Menu Header -->
+        <div class="mobile-menu-header">
+            <div class="mobile-logo">
+                <div class="logo-icon">JN</div>
+                <div class="logo-text">JavaNova</div>
+            </div>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Links -->
+        <div class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="#home" class="mobile-nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#about" class="mobile-nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#courses" class="mobile-nav-link">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#technologies" class="mobile-nav-link">
+                        <i class="fas fa-code"></i>
+                        <span>Technologies</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#features" class="mobile-nav-link">
+                        <i class="fas fa-star"></i>
+                        <span>Features</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#pricing" class="mobile-nav-link">
+                        <i class="fas fa-tags"></i>
+                        <span>Pricing</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#instructors" class="mobile-nav-link">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Instructors</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#contact" class="mobile-nav-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Mobile Menu Footer -->
+        <div class="mobile-menu-footer">
+            <p class="mobile-menu-text">JavaNova Academy</p>
+            <p class="mobile-menu-subtext">Innovating Java Education</p>
+        </div>
+    </nav>
+
+    <!-- LAYOUT-FIXED Header -->
+    <header class="navbar navbar-expand-lg custom-navbar fixed-top">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <div class="logo-icon me-2">JN</div>
+                <div class="logo-text">JavaNova</div>
+            </a>
+
+            <!-- LAYOUT-FIXED: Desktop Navigation (with theme toggle at far right) -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto me-4">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#technologies">Technologies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#instructors">Instructors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- LAYOUT-FIXED: Desktop Controls (Theme Toggle at Far Right) -->
+                <div class="desktop-controls">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle theme - Desktop positioning!">
+                        <span class="theme-icon" id="theme-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"/>
+                                <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- LAYOUT-FIXED: Mobile Controls (Theme Button First, Then Menu Toggle) -->
+            <div class="mobile-navbar-controls d-lg-none">
+                <!-- LAYOUT-FIXED: Theme Toggle Button (First Position on Mobile) -->
+                <button id="theme-toggle" class="theme-toggle d-lg-none" title="Toggle theme - Mobile first position!">
+                    <span class="theme-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                    </span>
+                </button>
+
+                <!-- LAYOUT-FIXED: Mobile Menu Toggle (Second Position on Mobile) -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero d-flex align-items-center" id="home">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="hero-content">
+                            <h1 class="display-3 fw-bold mb-4">Master Java Development</h1>
+                            <div class="typing-container mb-4">
+                                <span class="typing-text" id="typingText"></span>
+                                <span class="cursor" id="cursor"></span>
+                            </div>
+                            <p class="lead mb-5">Join thousands of developers who've transformed their careers with our comprehensive Java curriculum. From core concepts to enterprise applications.</p>
+                            <div class="hero-btns d-flex flex-wrap gap-3">
+                                <a href="#courses" class="btn btn-primary btn-lg">Start Learning</a>
+                                <a href="#about" class="btn btn-secondary btn-lg">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero-image text-center">
+                            <div class="floating">
+                                <svg viewBox="0 0 400 300" class="img-fluid">
+                                    <!-- Java Logo -->
+                                    <circle cx="200" cy="150" r="80" fill="url(#javaGradient)" opacity="0.8"/>
+                                    <text x="200" y="160" text-anchor="middle" fill="white" font-size="36" font-weight="bold">JAVA</text>
+
+                                    <!-- Floating Code Elements -->
+                                    <rect x="80" y="50" width="60" height="40" rx="8" fill="url(#codeGradient)" opacity="0.7"/>
+                                    <text x="110" y="75" text-anchor="middle" fill="white" font-size="12">class</text>
+
+                                    <rect x="260" y="220" width="80" height="40" rx="8" fill="url(#codeGradient)" opacity="0.7"/>
+                                    <text x="300" y="245" text-anchor="middle" fill="white" font-size="12">method()</text>
+
+                                    <rect x="50" y="200" width="70" height="40" rx="8" fill="url(#codeGradient)" opacity="0.7"/>
+                                    <text x="85" y="225" text-anchor="middle" fill="white" font-size="12">Spring</text>
+
+                                    <rect x="300" y="80" width="80" height="40" rx="8" fill="url(#codeGradient)" opacity="0.7"/>
+                                    <text x="340" y="105" text-anchor="middle" fill="white" font-size="12">Boot</text>
+
+                                    <!-- Gradients -->
+                                    <defs>
+                                        <linearGradient id="javaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#ff8c42;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                                        </linearGradient>
+                                        <linearGradient id="codeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#ff8c42;stop-opacity:1" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about py-5" id="about">
+            <div class="container">
+                <!-- Section Title -->
+                <div class="section-title text-center mb-5">
+                    <h2 class="display-4 fw-bold mb-3">Why Choose JavaNova Academy?</h2>
+                    <p class="lead">We're revolutionizing Java education with industry-proven methods and expert guidance</p>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-lg-6">
+                        <div class="about-mission">
+                            <h3 class="mb-3">Our Mission</h3>
+                            <p>To empower developers worldwide with comprehensive Java knowledge, practical skills, and industry insights that drive career success. We bridge the gap between academic learning and real-world application.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-stats">
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <div class="stat-number display-4 fw-bold mb-2">15K+</div>
+                                    <div class="stat-label">Students</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat-number display-4 fw-bold mb-2">95%</div>
+                                    <div class="stat-label">Success Rate</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat-number display-4 fw-bold mb-2">50+</div>
+                                    <div class="stat-label">Courses</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits Grid -->
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="benefit-card card h-100 text-center p-4">
+                            <div class="benefit-icon mb-3">
+                                <i class="fas fa-graduation-cap fa-3x"></i>
+                            </div>
+                            <h4>Expert Instructors</h4>
+                            <p>Learn from industry veterans with 10+ years of enterprise Java experience</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="benefit-card card h-100 text-center p-4">
+                            <div class="benefit-icon mb-3">
+                                <i class="fas fa-code fa-3x"></i>
+                            </div>
+                            <h4>Hands-On Projects</h4>
+                            <p>Build real-world applications and create an impressive portfolio</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="benefit-card card h-100 text-center p-4">
+                            <div class="benefit-icon mb-3">
+                                <i class="fas fa-users fa-3x"></i>
+                            </div>
+                            <h4>Community Support</h4>
+                            <p>Join our active community of learners and get help when you need it</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="benefit-card card h-100 text-center p-4">
+                            <div class="benefit-icon mb-3">
+                                <i class="fas fa-certificate fa-3x"></i>
+                            </div>
+                            <h4>Industry Recognition</h4>
+                            <p>Earn certificates recognized by top tech companies worldwide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section class="courses py-5" id="courses">
+            <div class="container">
+                <!-- Section Title -->
+                <div class="section-title text-center mb-5">
+                    <h2 class="display-4 fw-bold mb-3">Our Course Catalog</h2>
+                    <p class="lead">Comprehensive Java curriculum designed for every skill level</p>
+                </div>
+
+                <!-- ENHANCED Course Filter -->
+                <div class="courses-filter d-flex flex-wrap justify-content-center gap-3 mb-5">
+                    <button class="filter-btn active" data-filter="all">All Courses</button>
+                    <button class="filter-btn" data-filter="beginner">Beginner</button>
+                    <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+                    <button class="filter-btn" data-filter="advanced">Advanced</button>
+                    <button class="filter-btn" data-filter="specialization">Specialization</button>
+                </div>
+
+                <!-- Courses Grid -->
+                <div class="row g-4">
+                    <!-- Java Fundamentals -->
+                    <div class="col-lg-4 col-md-6 course-item" data-level="beginner">
+                        <div class="course-card card h-100">
+                            <div class="course-header p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge course-level beginner">Beginner</span>
+                                    <span class="course-duration">8 weeks</span>
+                                </div>
+                                <h3 class="card-title">Java Fundamentals</h3>
+                                <p class="card-text">Master the basics of Java programming from variables to object-oriented concepts.</p>
+                            </div>
+                            <div class="card-body">
+                                <h5>What you'll learn:</h5>
+                                <ul class="course-topics list-unstyled">
+                                    <li><i class="fas fa-check-circle me-2"></i>Java Syntax & Variables</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Control Structures</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Object-Oriented Programming</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Exception Handling</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Collections Framework</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer p-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="course-price h4 mb-0">$299</span>
+                                    <a href="#pricing" class="btn btn-primary">Enroll Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spring Boot Development -->
+                    <div class="col-lg-4 col-md-6 course-item" data-level="intermediate">
+                        <div class="course-card card h-100">
+                            <div class="course-header p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge course-level intermediate">Intermediate</span>
+                                    <span class="course-duration">10 weeks</span>
+                                </div>
+                                <h3 class="card-title">Spring Boot Development</h3>
+                                <p class="card-text">Build powerful web applications and REST APIs with Spring Boot framework.</p>
+                            </div>
+                            <div class="card-body">
+                                <h5>What you'll learn:</h5>
+                                <ul class="course-topics list-unstyled">
+                                    <li><i class="fas fa-check-circle me-2"></i>Spring Boot Fundamentals</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>REST API Development</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Database Integration</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Security Implementation</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Testing Strategies</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer p-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="course-price h4 mb-0">$449</span>
+                                    <a href="#pricing" class="btn btn-primary">Enroll Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Microservices Architecture -->
+                    <div class="col-lg-4 col-md-6 course-item" data-level="advanced">
+                        <div class="course-card card h-100">
+                            <div class="course-header p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge course-level advanced">Advanced</span>
+                                    <span class="course-duration">12 weeks</span>
+                                </div>
+                                <h3 class="card-title">Microservices Architecture</h3>
+                                <p class="card-text">Design and implement scalable microservices using Spring Cloud and Docker.</p>
+                            </div>
+                            <div class="card-body">
+                                <h5>What you'll learn:</h5>
+                                <ul class="course-topics list-unstyled">
+                                    <li><i class="fas fa-check-circle me-2"></i>Microservices Patterns</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Service Discovery</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>API Gateway</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Container Orchestration</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Monitoring & Logging</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer p-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="course-price h4 mb-0">$649</span>
+                                    <a href="#pricing" class="btn btn-primary">Enroll Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise Java -->
+                    <div class="col-lg-4 col-md-6 course-item" data-level="advanced">
+                        <div class="course-card card h-100">
+                            <div class="course-header p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge course-level advanced">Advanced</span>
+                                    <span class="course-duration">14 weeks</span>
+                                </div>
+                                <h3 class="card-title">Enterprise Java</h3>
+                                <p class="card-text">Master enterprise-level Java development with JEE, JPA, and advanced patterns.</p>
+                            </div>
+                            <div class="card-body">
+                                <h5>What you'll learn:</h5>
+                                <ul class="course-topics list-unstyled">
+                                    <li><i class="fas fa-check-circle me-2"></i>Java EE Frameworks</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>JPA & Hibernate</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Design Patterns</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Performance Optimization</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Enterprise Integration</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer p-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="course-price h4 mb-0">$749</span>
+                                    <a href="#pricing" class="btn btn-primary">Enroll Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Java Performance Tuning -->
+                    <div class="col-lg-4 col-md-6 course-item" data-level="specialization">
+                        <div class="course-card card h-100">
+                            <div class="course-header p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge course-level specialization">Specialization</span>
+                                    <span class="course-duration">6 weeks</span>
+                                </div>
+                                <h3 class="card-title">Java Performance Tuning</h3>
+                                <p class="card-text">Optimize Java applications for maximum performance and scalability.</p>
+                            </div>
+                            <div class="card-body">
+                                <h5>What you'll learn:</h5>
+                                <ul class="course-topics list-unstyled">
+                                    <li><i class="fas fa-check-circle me-2"></i>JVM Internals</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Garbage Collection</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Memory Management</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Profiling Tools</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Performance Monitoring</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer p-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="course-price h4 mb-0">$399</span>
+                                    <a href="#pricing" class="btn btn-primary">Enroll Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cloud-Native Java -->
+                    <div class="col-lg-4 col-md-6 course-item" data-level="specialization">
+                        <div class="course-card card h-100">
+                            <div class="course-header p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="badge course-level specialization">Specialization</span>
+                                    <span class="course-duration">8 weeks</span>
+                                </div>
+                                <h3 class="card-title">Cloud-Native Java</h3>
+                                <p class="card-text">Deploy Java applications on cloud platforms with modern DevOps practices.</p>
+                            </div>
+                            <div class="card-body">
+                                <h5>What you'll learn:</h5>
+                                <ul class="course-topics list-unstyled">
+                                    <li><i class="fas fa-check-circle me-2"></i>Docker & Kubernetes</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>AWS/Azure Deployment</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>CI/CD Pipelines</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Cloud Security</li>
+                                    <li><i class="fas fa-check-circle me-2"></i>Monitoring & Observability</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer p-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="course-price h4 mb-0">$549</span>
+                                    <a href="#pricing" class="btn btn-primary">Enroll Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="technologies py-5" id="technologies">
+            <div class="container">
+                <!-- Section Title -->
+                <div class="section-title text-center mb-5">
+                    <h2 class="display-4 fw-bold mb-3">Technologies We Cover</h2>
+                    <p class="lead">Stay current with the latest Java ecosystem and enterprise technologies</p>
+                </div>
+
+                <!-- Tech Grid -->
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="tech-item card text-center p-4 h-100">
+                            <i class="fab fa-java fa-3x mb-3"></i>
+                            <h4>Core Java</h4>
+                            <p>Java SE, Collections, Streams, Lambda Expressions</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="tech-item card text-center p-4 h-100">
+                            <i class="fas fa-leaf fa-3x mb-3"></i>
+                            <h4>Spring Framework</h4>
+                            <p>Spring Boot, Spring MVC, Spring Security, Spring Data</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="tech-item card text-center p-4 h-100">
+                            <i class="fas fa-database fa-3x mb-3"></i>
+                            <h4>Database</h4>
+                            <p>MySQL, PostgreSQL, MongoDB, Hibernate, JPA</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="tech-item card text-center p-4 h-100">
+                            <i class="fab fa-docker fa-3x mb-3"></i>
+                            <h4>DevOps</h4>
+                            <p>Docker, Kubernetes, Jenkins, Maven, Gradle</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="tech-item card text-center p-4 h-100">
+                            <i class="fas fa-cloud fa-3x mb-3"></i>
+                            <h4>Cloud Platforms</h4>
+                            <p>AWS, Microsoft Azure, Google Cloud Platform</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="tech-item card text-center p-4 h-100">
+                            <i class="fas fa-network-wired fa-3x mb-3"></i>
+                            <h4>Microservices</h4>
+                            <p>Spring Cloud, Eureka, Zuul, Circuit Breaker</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="tech-item card text-center p-4 h-100">
+                            <i class="fas fa-vial fa-3x mb-3"></i>
+                            <h4>Testing</h4>
+                            <p>JUnit, Mockito, TestNG, Integration Testing</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="tech-item card text-center p-4 h-100">
+                            <i class="fas fa-mobile-alt fa-3x mb-3"></i>
+                            <h4>APIs</h4>
+                            <p>REST, GraphQL, WebSockets, Microservices</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features py-5" id="features">
+            <div class="container">
+                <!-- Section Title -->
+                <div class="section-title text-center mb-5">
+                    <h2 class="display-4 fw-bold mb-3">Why Students Love JavaNova</h2>
+                    <p class="lead">Comprehensive learning experience designed for your success</p>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card card h-100 text-center p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-laptop-code fa-3x"></i>
+                            </div>
+                            <h3 class="card-title">Interactive Coding</h3>
+                            <p class="card-text">Practice coding directly in your browser with our interactive IDE. No setup required - start coding immediately.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card card h-100 text-center p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-project-diagram fa-3x"></i>
+                            </div>
+                            <h3 class="card-title">Real-World Projects</h3>
+                            <p class="card-text">Build actual applications that you can showcase to employers. Create a portfolio that stands out.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card card h-100 text-center p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-users-cog fa-3x"></i>
+                            </div>
+                            <h3 class="card-title">Mentorship Program</h3>
+                            <p class="card-text">Get paired with industry professionals for personalized guidance and career advice.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card card h-100 text-center p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-clock fa-3x"></i>
+                            </div>
+                            <h3 class="card-title">Flexible Schedule</h3>
+                            <p class="card-text">Learn at your own pace with 24/7 access to course materials and recorded sessions.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card card h-100 text-center p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-award fa-3x"></i>
+                            </div>
+                            <h3 class="card-title">Industry Certification</h3>
+                            <p class="card-text">Earn certificates that are recognized by Fortune 500 companies and tech startups alike.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card card h-100 text-center p-4">
+                            <div class="feature-icon mb-4">
+                                <i class="fas fa-handshake fa-3x"></i>
+                            </div>
+                            <h3 class="card-title">Job Placement</h3>
+                            <p class="card-text">Access our exclusive job board and get connected with hiring partners looking for Java developers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing py-5" id="pricing">
+            <div class="container">
+                <!-- Section Title -->
+                <div class="section-title text-center mb-5">
+                    <h2 class="display-4 fw-bold mb-3">Choose Your Learning Path</h2>
+                    <p class="lead">Flexible pricing options to fit your budget and learning goals</p>
+                </div>
+
+                <!-- Pricing Toggle -->
+                <div class="pricing-toggle d-flex justify-content-center align-items-center mb-5">
+                    <span class="toggle-label me-3">Monthly</span>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="pricingToggle">
+                    </div>
+                    <span class="toggle-label ms-3">Annual <span class="badge bg-success">Save 20%</span></span>
+                </div>
+
+                <!-- Pricing Cards -->
+                <div class="row g-4">
+                    <!-- Starter Plan -->
+                    <div class="col-lg-4">
+                        <div class="pricing-card card h-100 text-center">
+                            <div class="card-body p-4">
+                                <h3 class="card-title mb-3">Starter</h3>
+                                <div class="price display-4 fw-bold mb-3">
+                                    <span class="price-amount" data-monthly="29">$29</span>
+                                    <span class="fs-6 fw-normal">/month</span>
+                                </div>
+                                <p class="card-text mb-4">Perfect for beginners starting their Java journey</p>
+
+                                <ul class="pricing-features list-unstyled text-start mb-4">
+                                    <li><i class="fas fa-check text-success me-2"></i>Access to Java Fundamentals course</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Interactive coding exercises</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Community forum access</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Basic project templates</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Certificate of completion</li>
+                                </ul>
+
+                                <a href="#contact" class="btn btn-outline-primary w-100">Get Started</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Plan -->
+                    <div class="col-lg-4">
+                        <div class="pricing-card card h-100 text-center position-relative">
+                            <div class="popular-badge">Most Popular</div>
+                            <div class="card-body p-4">
+                                <h3 class="card-title mb-3">Professional</h3>
+                                <div class="price display-4 fw-bold mb-3">
+                                    <span class="price-amount" data-monthly="79">$79</span>
+                                    <span class="fs-6 fw-normal">/month</span>
+                                </div>
+                                <p class="card-text mb-4">Ideal for developers building professional skills</p>
+
+                                <ul class="pricing-features list-unstyled text-start mb-4">
+                                    <li><i class="fas fa-check text-success me-2"></i>All Starter features</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Spring Boot & Enterprise courses</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Real-world projects</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Code reviews from instructors</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Career guidance sessions</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Job placement assistance</li>
+                                </ul>
+
+                                <a href="#contact" class="btn btn-primary w-100">Start Learning</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <div class="col-lg-4">
+                        <div class="pricing-card card h-100 text-center">
+                            <div class="card-body p-4">
+                                <h3 class="card-title mb-3">Enterprise</h3>
+                                <div class="price display-4 fw-bold mb-3">
+                                    <span class="price-amount" data-monthly="129">$129</span>
+                                    <span class="fs-6 fw-normal">/month</span>
+                                </div>
+                                <p class="card-text mb-4">Complete mastery with personalized mentorship</p>
+
+                                <ul class="pricing-features list-unstyled text-start mb-4">
+                                    <li><i class="fas fa-check text-success me-2"></i>All Professional features</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Advanced & specialization courses</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>1-on-1 mentorship sessions</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Custom learning path</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Priority job placement</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Lifetime access to materials</li>
+                                </ul>
+
+                                <a href="#contact" class="btn btn-outline-primary w-100">Go Premium</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Money Back Guarantee -->
+                <div class="text-center mt-5">
+                    <p class="lead">
+                        <i class="fas fa-shield-alt text-success me-2"></i>
+                        30-day money-back guarantee on all plans
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENHANCED Instructors Section with 5 People -->
+        <section class="instructors py-5" id="instructors">
+            <div class="container">
+                <!-- Section Title -->
+                <div class="section-title text-center mb-5">
+                    <h2 class="display-4 fw-bold mb-3">Meet Our Expert Instructors</h2>
+                    <p class="lead">Learn from industry veterans with years of enterprise experience</p>
+                </div>
+
+                <!-- Instructors Grid -->
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card card h-100">
+                            <div class="instructor-img">
+                                <div class="instructor-placeholder d-flex align-items-center justify-content-center h-100" style="background: linear-gradient(135deg, #ff6b6b, #4ecdc4);">
+                                    <div class="text-center text-white">
+                                        <i class="fas fa-user-tie fa-4x mb-3"></i>
+                                        <h4>Sarah Chen</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center p-4">
+                                <h3 class="card-title">Sarah Chen</h3>
+                                <p class="instructor-company">Senior Java Architect @ Google</p>
+                                <p class="instructor-bio">15+ years building scalable Java applications. Former lead developer at Netflix and Uber. Specializes in microservices and cloud architecture.</p>
+                                <div class="instructor-skills">
+                                    <span class="badge bg-primary me-1">Spring Boot</span>
+                                    <span class="badge bg-primary me-1">Microservices</span>
+                                    <span class="badge bg-primary me-1">Cloud</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card card h-100">
+                            <div class="instructor-img">
+                                <div class="instructor-placeholder d-flex align-items-center justify-content-center h-100" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                    <div class="text-center text-white">
+                                        <i class="fas fa-user-tie fa-4x mb-3"></i>
+                                        <h4>Michael Rodriguez</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center p-4">
+                                <h3 class="card-title">Michael Rodriguez</h3>
+                                <p class="instructor-company">Principal Engineer @ Amazon</p>
+                                <p class="instructor-bio">12+ years in enterprise Java development. Expert in performance optimization and distributed systems. AWS certified solutions architect.</p>
+                                <div class="instructor-skills">
+                                    <span class="badge bg-primary me-1">Performance</span>
+                                    <span class="badge bg-primary me-1">AWS</span>
+                                    <span class="badge bg-primary me-1">JVM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card card h-100">
+                            <div class="instructor-img">
+                                <div class="instructor-placeholder d-flex align-items-center justify-content-center h-100" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                                    <div class="text-center text-white">
+                                        <i class="fas fa-user-tie fa-4x mb-3"></i>
+                                        <h4>Dr. Emily Watson</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center p-4">
+                                <h3 class="card-title">Dr. Emily Watson</h3>
+                                <p class="instructor-company">Java Champion & Consultant</p>
+                                <p class="instructor-bio">PhD in Computer Science. Oracle Java Champion. Author of 3 bestselling Java books. 20+ years teaching and developing Java applications.</p>
+                                <div class="instructor-skills">
+                                    <span class="badge bg-primary me-1">Core Java</span>
+                                    <span class="badge bg-primary me-1">Teaching</span>
+                                    <span class="badge bg-primary me-1">Author</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NEW INSTRUCTOR 4 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card card h-100">
+                            <div class="instructor-img">
+                                <div class="instructor-placeholder d-flex align-items-center justify-content-center h-100" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                                    <div class="text-center text-white">
+                                        <i class="fas fa-user-tie fa-4x mb-3"></i>
+                                        <h4>David Kumar</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center p-4">
+                                <h3 class="card-title">David Kumar</h3>
+                                <p class="instructor-company">Tech Lead @ Microsoft</p>
+                                <p class="instructor-bio">10+ years in enterprise Java and Azure cloud solutions. Specializes in Spring Security, DevOps, and CI/CD pipelines. Microsoft Azure MVP.</p>
+                                <div class="instructor-skills">
+                                    <span class="badge bg-primary me-1">Security</span>
+                                    <span class="badge bg-primary me-1">Azure</span>
+                                    <span class="badge bg-primary me-1">DevOps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NEW INSTRUCTOR 5 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="instructor-card card h-100">
+                            <div class="instructor-img">
+                                <div class="instructor-placeholder d-flex align-items-center justify-content-center h-100" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                                    <div class="text-center text-white">
+                                        <i class="fas fa-user-tie fa-4x mb-3"></i>
+                                        <h4>Lisa Thompson</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body text-center p-4">
+                                <h3 class="card-title">Lisa Thompson</h3>
+                                <p class="instructor-company">Senior Software Engineer @ LinkedIn</p>
+                                <p class="instructor-bio">8+ years in Java development and data engineering. Expert in Kafka, Elasticsearch, and high-throughput systems. Passionate about clean code and best practices.</p>
+                                <div class="instructor-skills">
+                                    <span class="badge bg-primary me-1">Data Engineering</span>
+                                    <span class="badge bg-primary me-1">Kafka</span>
+                                    <span class="badge bg-primary me-1">Clean Code</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact py-5" id="contact">
+            <div class="container">
+                <!-- Section Title -->
+                <div class="section-title text-center mb-5">
+                    <h2 class="display-4 fw-bold mb-3">Get Started Today</h2>
+                    <p class="lead">Ready to transform your career? Let's talk about your Java learning journey</p>
+                </div>
+
+                <div class="row g-5">
+                    <!-- Contact Information -->
+                    <div class="col-lg-6">
+                        <div class="contact-info">
+                            <h3 class="mb-4">Contact Information</h3>
+
+                            <div class="contact-item d-flex align-items-center mb-4">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email Us</h4>
+                                    <p><a href="mailto:info@javanova.academy">info@javanova.academy</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item d-flex align-items-center mb-4">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Call Us</h4>
+                                    <p><a href="tel:+1-555-JAVA-NOW">+1-555-JAVA-NOW</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item d-flex align-items-center mb-4">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Support Hours</h4>
+                                    <p>Monday - Friday: 9:00 AM - 6:00 PM PST<br>Weekend: 10:00 AM - 4:00 PM PST</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item d-flex align-items-center mb-4">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Free Consultation</h4>
+                                    <p>Schedule a 30-minute career consultation with our advisors</p>
+                                </div>
+                            </div>
+
+                            <!-- ENHANCED Social Media -->
+                            <div class="social-media mt-5">
+                                <h4 class="mb-3">Follow Us</h4>
+                                <div class="social-links d-flex gap-3">
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="col-lg-6">
+                        <div class="contact-form">
+                            <h3 class="mb-4">Send us a Message</h3>
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                        <div class="invalid-feedback">
+                                            Please provide your first name.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                        <div class="invalid-feedback">
+                                            Please provide your last name.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid email address.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="interest" class="form-label">I'm Interested In *</label>
+                                    <select class="form-select" id="interest" name="interest" required>
+                                        <option value="">Choose your interest...</option>
+                                        <option value="beginner">Java Fundamentals (Beginner)</option>
+                                        <option value="intermediate">Spring Boot Development</option>
+                                        <option value="advanced">Advanced Java & Microservices</option>
+                                        <option value="enterprise">Enterprise Solutions</option>
+                                        <option value="consultation">Free Career Consultation</option>
+                                        <option value="corporate">Corporate Training</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select your area of interest.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="experience" class="form-label">Programming Experience</label>
+                                    <select class="form-select" id="experience" name="experience">
+                                        <option value="">Select your level...</option>
+                                        <option value="none">Complete Beginner</option>
+                                        <option value="basic">Some Programming Knowledge</option>
+                                        <option value="intermediate">Intermediate Developer</option>
+                                        <option value="advanced">Experienced Developer</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea class="form-control" id="message" name="message" rows="4" required placeholder="Tell us about your goals and how we can help you..."></textarea>
+                                    <div class="invalid-feedback">
+                                        Please provide a message.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to our newsletter for Java tips and course updates
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ENHANCED Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- About JavaNova -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-about">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="logo-icon me-2">JN</div>
+                            <div class="logo-text">JavaNova</div>
+                        </div>
+                        <p>Empowering developers worldwide with comprehensive Java education. Join thousands of successful graduates who've transformed their careers with JavaNova Academy.</p>
+                        <div class="social-links d-flex gap-3 mt-3">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#courses">Courses</a></li>
+                            <li><a href="#instructors">Instructors</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Courses -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h4>Popular Courses</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#courses">Java Fundamentals</a></li>
+                            <li><a href="#courses">Spring Boot</a></li>
+                            <li><a href="#courses">Microservices</a></li>
+                            <li><a href="#courses">Enterprise Java</a></li>
+                            <li><a href="#courses">Cloud-Native Java</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h4>Support</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Student Portal</a></li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Career Services</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="copyright text-center pt-4 mt-4">
+                <p>&copy; 2024 <a href="#home">JavaNova Academy</a>. All rights reserved. | Innovating Java Education for Tomorrow's Developers</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - LAYOUT-FIXED Loading Order -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ENHANCED Theme Engine (loads first) -->
+    <script src="js/theme-engine.js"></script>
+
+    <!-- ENHANCED Application Script (loads second) -->
+    <script src="js/script.js"></script>
+
+    <!-- LAYOUT-FIXED Test Script for Debugging -->
+    <script>
+        // Layout-fixed debug information
+        console.log('🎯 JavaNova Academy - LAYOUT-FIXED Version');
+        console.log('📄 HTML loaded successfully');
+        console.log('🎨 Theme engine:', typeof window.themeEngine !== 'undefined' ? 'LOADED ✅' : 'NOT LOADED ❌');
+        console.log('📱 App:', typeof window.JavaNovaApp !== 'undefined' ? 'LOADED ✅' : 'NOT LOADED ❌');
+
+        // Test layout-fixed features after everything loads
+        setTimeout(() => {
+            const desktopThemeToggle = document.querySelector('.desktop-controls #theme-toggle');
+            const mobileThemeToggle = document.querySelector('.mobile-navbar-controls #theme-toggle');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const typingText = document.getElementById('typingText');
+            const cursor = document.getElementById('cursor');
+
+            console.log('🖥️  Desktop theme toggle:', desktopThemeToggle ? 'FOUND ✅' : 'NOT FOUND ❌');
+            console.log('📱 Mobile theme toggle:', mobileThemeToggle ? 'FOUND ✅' : 'NOT FOUND ❌');
+            console.log('📱 Mobile menu toggle:', mobileMenuToggle ? 'FOUND ✅' : 'NOT FOUND ❌');
+            console.log('⌨️  Typing text element:', typingText ? 'FOUND ✅' : 'NOT FOUND ❌');
+            console.log('📍 Cursor element:', cursor ? 'FOUND ✅' : 'NOT FOUND ❌');
+
+            // Check layout positioning
+            if (window.innerWidth >= 992) {
+                // Desktop layout
+                if (desktopThemeToggle) {
+                    const desktopVisible = window.getComputedStyle(desktopThemeToggle).display !== 'none';
+                    console.log('🖥️  Desktop layout active - Theme toggle at far right:', desktopVisible ? 'POSITIONED CORRECTLY ✅' : 'POSITIONING ISSUE ❌');
+                }
+
+                if (mobileThemeToggle) {
+                    const mobileHidden = window.getComputedStyle(mobileThemeToggle).display === 'none';
+                    console.log('📱 Desktop layout active - Mobile controls hidden:', mobileHidden ? 'CORRECTLY HIDDEN ✅' : 'SHOULD BE HIDDEN ❌');
+                }
+            } else {
+                // Mobile layout
+                if (mobileThemeToggle && mobileMenuToggle) {
+                    const mobileContainer = document.querySelector('.mobile-navbar-controls');
+                    const children = Array.from(mobileContainer.children);
+                    const themeIndex = children.indexOf(mobileThemeToggle);
+                    const menuIndex = children.indexOf(mobileMenuToggle);
+
+                    console.log('📱 Mobile layout active - Theme button position:', themeIndex === 0 ? 'FIRST (CORRECT) ✅' : 'NOT FIRST ❌');
+                    console.log('📱 Mobile layout active - Menu toggle position:', menuIndex === 1 ? 'SECOND (CORRECT) ✅' : 'NOT SECOND ❌');
+                }
+
+                if (desktopThemeToggle) {
+                    const desktopHidden = window.getComputedStyle(desktopThemeToggle).display === 'none';
+                    console.log('🖥️  Mobile layout active - Desktop controls hidden:', desktopHidden ? 'CORRECTLY HIDDEN ✅' : 'SHOULD BE HIDDEN ❌');
+                }
+            }
+
+            if (window.themeEngine) {
+                console.log('✅ LAYOUT-FIXED theme system is ready and functional!');
+                console.log('🎯 Layout: Desktop theme toggle at far right, mobile theme first');
+                console.log('🎨 Features: Enhanced animations, responsive footer, 5 instructors');
+                console.log('🔄 Try resizing window to test responsive layout switching!');
+            } else {
+                console.error('❌ Layout-fixed theme system not working properly');
+            }
+
+            if (cursor) {
+                console.log('✅ ENHANCED typing animation with proper cursor blinking');
+                cursor.style.color = '#ff8c42';
+            }
+
+            console.log('🏆 LAYOUT-FIXED VERSION FEATURES:');
+            console.log('   🖥️  Desktop: Theme toggle positioned at far right of navbar');
+            console.log('   📱 Mobile: Theme button first, menu toggle second');
+            console.log('   ✨ All enhanced animations and features preserved');
+            console.log('   🎨 Smooth responsive layout switching');
+            console.log('   🦶 Theme-responsive footer design');
+            console.log('   👨‍🏫 5 instructors with unique gradients');
+            console.log('   🔘 Rounded filter buttons with mobile optimization');
+
+        }, 1000);
+
+        // Test layout changes on window resize
+        window.addEventListener('resize', () => {
+            const isDesktop = window.innerWidth >= 992;
+            console.log('📏 Window resized to:', window.innerWidth + 'px');
+            console.log('🎯 Layout mode:', isDesktop ? 'DESKTOP (theme at far right)' : 'MOBILE (theme first, menu second)');
+        });
+    </script>
+</body>
+</html>
