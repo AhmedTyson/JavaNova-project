@@ -629,7 +629,7 @@ body {
   width: 50px;
   height: 50px;
   background: transparent; /* remove semi-opaque fill */
-  border: 2px solid ;
+  border: 2px solid;
   border-radius: 60%; /* perfect circle */
   color: var(--javanova-orange); /* outline & icon color */
   font-size: 1.8rem;
@@ -664,8 +664,12 @@ body {
   background: #0077b5;
 }
 
-.github { border-color: #333;  }
-.github:hover { background: #333; }
+.github {
+  border-color: #333;
+}
+.github:hover {
+  background: #333;
+}
 
 /* Bar Chart */
 .chart-container {
@@ -928,72 +932,92 @@ body {
   border-color: rgba(106, 13, 173, 0.5);
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .slide {
-    padding: 1rem;
+/* =============================================================================
+   Disable custom cursor on touch devices
+   ========================================================================== */
+@media (hover: none), (pointer: coarse) {
+  .cursor,
+  .cursor-follower {
+    display: none !important;
+  }
+}
+
+/* =============================================================================
+   Tablet & small-laptop (≤1200px)
+   – collapse our custom grids to one column
+   – stack any Bootstrap .row into a single column
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .story-section,
+  .content-grid,
+  .milestone-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
   }
 
-  .slide-content h1 {
-    font-size: 2rem;
-  }
-
-  .slide-content h2 {
-    font-size: 1.5rem;
-  }
-
-  .slide-content p {
-    font-size: 1rem;
-  }
-
-  .nav-btn {
-    width: 40px;
-    height: 40px;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
-  .social-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+  /* stack Bootstrap columns */
+  .slide-content > .row {
+    flex-direction: column;
   }
 
   .stats-container {
     flex-direction: column;
-    align-items: center;
+    gap: 1rem;
   }
 
-  .stat-item {
-    min-width: 100%;
-  }
-
-  .graduate-links {
-    flex-direction: column;
-  }
-
-  .milestone-grid {
-    grid-template-columns: 1fr;
+  /* cards stretch full width */
+  .story-card,
+  .feature-card,
+  .milestone-card,
+  .graduate-card,
+  .step-card,
+  .stat-card {
+    max-width: 100%;
+    margin: 0 auto;
   }
 }
 
-/* ——— Smaller “Our Story” cards in landscape/PowerPoint style ——— */
-@media (orientation: landscape) and (min-width: 1024px) {
-  .story-section .story-card {
-    min-width: 200px; /* was 300px */
-    max-width: 250px; /* was 400px */
-    padding: 1rem; /* shrink card padding */
+/* =============================================================================
+   Mobile (≤768px)
+   – reduce padding & font sizes
+   – move nav controls to bottom
+   ========================================================================== */
+@media (max-width: 768px) {
+  .slide {
+    padding: 1rem;
   }
-  .story-section .story-icon {
-    font-size: 2.5rem; /* shrink icon */
+  .slide-content {
+    padding: 1rem;
   }
-  .story-section h3 {
-    font-size: 1.2rem; /* shrink heading */
+
+  .slide-content h1 {
+    font-size: clamp(2rem, 6vw, 2.5rem);
   }
-  .story-section p {
-    font-size: 0.9rem; /* shrink text */
-    line-height: 1.4;
+  .slide-content h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+  .slide-content p {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+  }
+
+  .navigation-controls {
+    top: auto;
+    bottom: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+/* =============================================================================
+   Phone (≤480px)
+   – further shrink text & buttons
+   ========================================================================== */
+@media (max-width: 480px) {
+  .slide-title h1 {
+    font-size: 1.5rem;
+  }
+  .cta-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 }
