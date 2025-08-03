@@ -1,706 +1,1072 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaNova Academy | Enhanced Presentation</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- custom cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="cursor-follower"></div>
+:root {
+  --javanova-orange: #ff8c42;
+  --javanova-purple: #8b5cf6;
+  --javanova-dark: #1a1a2e;
+  --javanova-darker: #0d0d1f;
+  --cosmic-glow: rgba(255, 140, 66, 0.3);
+  --cosmic-purple-glow: rgba(139, 92, 246, 0.3);
+}
 
-    <!-- Slide 1: The Spark -->
-    <section class="slide slide-title" id="slide-1">
-      <div class="cosmic-background">
-        <div class="stars"></div>
-        <div class="nova-burst"></div>
-      </div>
-      <div class="slide-content">
-        <h1 class="main-title">JavaNova Academy</h1>
-        <div class="subtitle">
-          Where Java Learning Becomes Simple, Practical, and Fun!
-        </div>
-        <p class="mt-4">
-          A youth-driven educational movement founded by university students in
-          Summer 2024
-        </p>
-      </div>
-    </section>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <!-- Slide 2: Our Story - ENHANCED -->
-    <section class="slide" id="slide-2">
-      <div class="slide-content">
-        <h2>Our Story</h2>
-        <p class="lead">From university project to Java education revolution</p>
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--javanova-darker) 0%,
+    var(--javanova-dark) 100%
+  );
+  color: white;
+  overflow-x: hidden;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
 
-        <div class="story-section">
-          <div class="story-card">
-            <div class="story-icon">
-              <i class="fas fa-seedling"></i>
-            </div>
-            <h3>The Beginning</h3>
-            <p>
-              JavaNova Academy began in <strong>Summer 2024</strong> as a
-              university project where students taught each other Java online.
-            </p>
-            <p>
-              What started as a small Telegram group with explanatory videos has
-              grown into a comprehensive educational platform.
-            </p>
-          </div>
+.slide {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+}
 
-          <div class="story-card">
-            <div class="story-icon">
-              <i class="fas fa-rocket"></i>
-            </div>
-            <h3>The Growth</h3>
-            <p>
-              Within just 3 months, we expanded from 30 students to over 1,000
-              active learners.
-            </p>
-            <p>
-              Our community-driven approach created an ecosystem where knowledge
-              sharing became the core of our success.
-            </p>
-          </div>
+.slide-content {
+  max-width: 1200px;
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+}
 
-          <div class="story-card">
-            <div class="story-icon">
-              <i class="fas fa-bullseye"></i>
-            </div>
-            <h3>Our Mission</h3>
-            <p>"We explain better than traditional courses"</p>
-            <p>
-              Our goal is to make Java accessible to everyone through practical,
-              hands-on learning experiences.
-            </p>
-          </div>
-        </div>
+.slide-content h1,
+.slide-content h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
 
-        <div class="milestone-grid">
-          <div class="milestone-card">
-            <div class="milestone-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="milestone-date">Summer 2024</div>
-            <h4>Community Born</h4>
-            <p>Created a Telegram group with first 30 students</p>
-          </div>
+.slide-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(
+    45deg,
+    var(--javanova-orange),
+    var(--javanova-purple)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-          <div class="milestone-card">
-            <div class="milestone-icon">
-              <i class="fas fa-book"></i>
-            </div>
-            <div class="milestone-date">June 2024</div>
-            <h4>First Resources</h4>
-            <p>Released "Java Basics in 30 Minutes" study guide</p>
-          </div>
+.slide-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
 
-          <div class="milestone-card">
-            <div class="milestone-icon">
-              <i class="fas fa-video"></i>
-            </div>
-            <div class="milestone-date">July 2024</div>
-            <h4>Video Revolution</h4>
-            <p>Recorded first 5-minute explanatory videos</p>
-          </div>
+.slide-content p {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
 
-          <div class="milestone-card">
-            <div class="milestone-icon">
-              <i class="fas fa-lightbulb"></i>
-            </div>
-            <div class="milestone-date">August 2024</div>
-            <h4>Breakthrough</h4>
-            <p>
-              Students began understanding complex concepts like Objects through
-              peer discussions
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+.main-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
 
-    <!-- Slide 3: The Problem -->
-    <section class="slide" id="slide-3">
-      <div class="slide-content">
-        <h2>The Problem with Java Learning</h2>
-        <div class="row mt-5">
-          <div class="col-md-6 mb-4">
-            <div class="floating-card others">
-              <div class="card-icon">
-                <i class="fas fa-chalkboard-teacher"></i>
-              </div>
-              <h3 class="card-title">Traditional Learning</h3>
-              <p>Students struggle alone with no support</p>
-              <p>Endless theory with little practice</p>
-              <p>Courses assume prior knowledge</p>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4">
-            <div class="floating-card java-nova">
-              <div class="card-icon"><i class="fas fa-users"></i></div>
-              <h3 class="card-title">Our Solution</h3>
-              <p>Peer-to-peer community support</p>
-              <p>Project-based learning from day one</p>
-              <p>Beginner-friendly approach</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.subtitle {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 300;
+  color: var(--javanova-orange);
+  letter-spacing: 2px;
+}
 
-    <!-- Slide 4: Why Java? -->
-    <section class="slide" id="slide-4">
-      <div class="slide-content">
-        <h2>Why Java? Why Now?</h2>
-        <div class="row mt-5">
-          <div class="col-md-4 mb-4">
-            <div class="step-card">
-              <div class="step-number">1</div>
-              <div class="card-icon"><i class="fas fa-microchip"></i></div>
-              <h3>Technical Excellence</h3>
-              <p>Simple syntax with powerful capabilities</p>
-              <p>Robust memory management</p>
-              <p>Platform independence</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="step-card">
-              <div class="step-number">2</div>
-              <div class="card-icon"><i class="fas fa-industry"></i></div>
-              <h3>Industry Dominance</h3>
-              <p>Powers Netflix, Amazon, and banking systems</p>
-              <p>Foundation of Android development</p>
-              <p>90% of Fortune 500 backends</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="step-card">
-              <div class="step-number">3</div>
-              <div class="card-icon"><i class="fas fa-briefcase"></i></div>
-              <h3>Career Opportunities</h3>
-              <p>Backend development roles</p>
-              <p>Mobile app development (Android)</p>
-              <p>Enterprise software engineering</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+/* 3D Effect Elements */
+.floating-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 2px solid transparent;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
 
-    <!-- Slide 5: Why JavaNova? -->
-    <section class="slide" id="slide-5">
-      <div class="slide-content">
-        <h2>Why Choose JavaNova?</h2>
-        <div class="row mt-4">
-          <div class="col-md-6 mb-4">
-            <div class="floating-card others">
-              <div class="card-icon"><i class="fas fa-book"></i></div>
-              <h3 class="card-title">Other Platforms</h3>
-              <p>Mostly theory and examples</p>
-              <p>Generic forums with slow responses</p>
-              <p>Certificates without real skills</p>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4">
-            <div class="floating-card java-nova">
-              <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-              <h3 class="card-title">JavaNova Academy</h3>
-              <p>Every concept becomes a project</p>
-              <p>Direct community support 24/7</p>
-              <p>Real GitHub portfolio</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.floating-card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+  box-shadow: 0 20px 40px var(--cosmic-glow);
+}
 
-    <!-- Slide 6: Teaching Approach -->
-    <section class="slide" id="slide-6">
-      <div class="slide-content">
-        <h2>Our Teaching Methodology</h2>
-        <div class="row mt-5">
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="step-card">
-              <div class="step-number">1</div>
-              <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-              <h4>Clear Objectives</h4>
-              <p>Define exactly what you'll master in each chapter</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="step-card">
-              <div class="step-number">2</div>
-              <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-              <h4>Trusted Sources</h4>
-              <p>Oracle Docs, University curricula, Industry standards</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="step-card">
-              <div class="step-number">3</div>
-              <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
-              <h4>Simplified Concepts</h4>
-              <p>Real-life analogies and step-by-step explanations</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="step-card">
-              <div class="step-number">4</div>
-              <div class="card-icon"><i class="fas fa-code"></i></div>
-              <h4>Hands-On Projects</h4>
-              <p>Build real applications after every lesson</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.java-nova .floating-card {
+  border-left: 5px solid var(--javanova-orange);
+}
 
-    <!-- Slide 7: Success Stories -->
-    <section class="slide" id="slide-7">
-      <div class="slide-content">
-        <h2>Real People, Real Success Stories</h2>
-        <div class="success-intro">
-          <p>
-            See what's possible with Java skills - real people building real
-            careers.
-          </p>
-        </div>
+.others .floating-card {
+  border-left: 5px solid var(--javanova-purple);
+}
 
-        <div class="row">
-          <div class="col-md-6 mb-4">
-            <div class="graduate-card">
-              <div class="team-photo"><i class="fas fa-user-tie"></i></div>
-              <div class="graduate-name">Mohamed Hassan</div>
-              <div class="graduate-role">
-                Senior Java Developer at E-finance
-              </div>
-              <p class="graduate-description">
-                Working with Java across multiple companies, reached senior
-                position at major electronic payment company in Egypt.
-              </p>
-              <div class="graduate-links">
-                <a
-                  href="https://wuzzuf.net/me/Mohamed-Hassan-fab2e12a22"
-                  target="_blank"
-                  class="profile-link"
-                >
-                  <i class="fas fa-external-link-alt"></i> Wuzzuf
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/muhamed-hassan"
-                  target="_blank"
-                  class="profile-link"
-                >
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4">
-            <div class="graduate-card">
-              <div class="team-photo"><i class="fas fa-user-graduate"></i></div>
-              <div class="graduate-name">Omar Yahya</div>
-              <div class="graduate-role">Java Backend Intern at Fawry</div>
-              <p class="graduate-description">
-                Engineering graduate, started as Java Intern at Fawry with
-                backend development focus.
-              </p>
-              <div class="graduate-links">
-                <a
-                  href="https://wuzzuf.net/me/omar-yehia-3ba5f9830a"
-                  target="_blank"
-                  class="profile-link"
-                >
-                  <i class="fas fa-external-link-alt"></i> Wuzzuf
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4">
-            <div class="graduate-card">
-              <div class="team-photo"><i class="fas fa-laptop-code"></i></div>
-              <div class="graduate-name">Mohamed Magdy</div>
-              <div class="graduate-role">
-                Java Freelancer (Spring Boot & JavaFX)
-              </div>
-              <p class="graduate-description">
-                Working on various Java freelance projects with expertise in
-                JavaFX and Spring frameworks.
-              </p>
-              <div class="graduate-links">
-                <a
-                  href="https://wuzzuf.net/me/Mohamed-Magdy-852cf55193"
-                  target="_blank"
-                  class="profile-link"
-                >
-                  <i class="fas fa-external-link-alt"></i> Wuzzuf
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4">
-            <div class="graduate-card">
-              <div class="team-photo"><i class="fas fa-rocket"></i></div>
-              <div class="graduate-name">Mahmoud Soliman</div>
-              <div class="graduate-role">Java Web Developer Intern</div>
-              <p class="graduate-description">
-                Working on Java Web technologies including JSP and Servlets.
-                Building web applications.
-              </p>
-              <div class="graduate-links">
-                <a
-                  href="https://wuzzuf.net/me/Mahmoud-Soliman-ebe83bfcdd"
-                  target="_blank"
-                  class="profile-link"
-                >
-                  <i class="fas fa-external-link-alt"></i> Wuzzuf
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.card-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
 
-    <!-- Slide 8: Impact with Statistics -->
-    <section class="slide" id="slide-8">
-      <div class="slide-content">
-        <h2>Our Impact by the Numbers</h2>
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
-        <div class="stats-container">
-          <div class="stat-item">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-users"></i></div>
-              <div class="stat-number">15,000+</div>
-              <div class="stat-label">Students Trained</div>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
-              <div class="stat-number">95%</div>
-              <div class="stat-label">Success Rate</div>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
-              <div class="stat-number">6-12</div>
-              <div class="stat-label">Months to Mastery</div>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
-              <div class="stat-number">85%</div>
-              <div class="stat-label">Job Placement</div>
-            </div>
-          </div>
-        </div>
+.java-nova .card-icon {
+  color: var(--javanova-orange);
+}
 
-        <div class="chart-container">
-          <div class="bar-chart">
-            <div class="bar" id="bar-students" style="height: 0">
-              <div class="bar-value">15,000+</div>
-              <div class="bar-label">Students</div>
-            </div>
-            <div class="bar" id="bar-success" style="height: 0">
-              <div class="bar-value">95%</div>
-              <div class="bar-label">Success Rate</div>
-            </div>
-            <div class="bar" id="bar-months" style="height: 0">
-              <div class="bar-value">6-12</div>
-              <div class="bar-label">Months</div>
-            </div>
-            <div class="bar" id="bar-jobs" style="height: 0">
-              <div class="bar-value">85%</div>
-              <div class="bar-label">Job Placement</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.others .card-icon {
+  color: var(--javanova-purple);
+}
 
-    <!-- Slide 9: Website Features -->
-    <section class="slide" id="slide-9">
-      <div class="slide-content">
-        <h2>Our Learning Platform</h2>
-        <p class="mb-4">
-          Explore our feature-rich website designed for the best learning
-          experience
-        </p>
+.step-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 2px solid var(--javanova-orange);
+  backdrop-filter: blur(10px);
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateX(0deg) translateZ(0);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
-        <div class="platform-mockup">
-          <div class="browser-bar">
-            <div class="browser-dot dot-red"></div>
-            <div class="browser-dot dot-yellow"></div>
-            <div class="browser-dot dot-green"></div>
-          </div>
-          <div class="website-content">
-            <div class="website-grid">
-              <div class="grid-item">Interactive Lessons</div>
-              <div class="grid-item">Community Forum</div>
-              <div class="grid-item">Progress Tracking</div>
-              <div class="grid-item">Projects Showcase</div>
-              <div class="grid-item">Live Q&A</div>
-              <div class="grid-item">Career Resources</div>
-            </div>
-          </div>
-        </div>
+.step-card:hover {
+  transform: perspective(800px) rotateX(5deg) translateZ(15px);
+  box-shadow: 0 15px 30px var(--cosmic-purple-glow);
+}
 
-        <div class="row mt-4">
-          <div class="col-md-4 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="fas fa-code"></i></div>
-              <h3>Interactive Learning</h3>
-              <p>Code directly in the browser with instant feedback</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="fas fa-comments"></i></div>
-              <h3>Community Hub</h3>
-              <p>Connect with peers and mentors in real-time</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="feature-card">
-              <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-              <h3>Progress Tracking</h3>
-              <p>Monitor your learning journey with detailed analytics</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: var(--javanova-purple);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0 auto 1rem;
+  transform: translateZ(20px);
+}
 
-    <!-- Slide 10: Meet Our Team -->
-    <section class="slide" id="slide-10">
-      <div class="slide-content">
-        <h2>Meet Our Team</h2>
-        <p class="mb-5">
-          Passionate university students revolutionizing Java education
-        </p>
+.graduate-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--javanova-orange);
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateY(0deg) translateZ(0);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
 
-        <div class="row mt-4">
-          <div class="col-md-4 mb-4">
-            <div class="team-card">
-              <div class="team-photo"><i class="fas fa-user"></i></div>
-              <div class="team-name">Ahmed Elsayed</div>
-              <div class="team-role">Design & Presentation Lead</div>
-              <p>Handles visual design, presentations, and brand consistency</p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="team-card">
-              <div class="team-photo"><i class="fas fa-user"></i></div>
-              <div class="team-name">Omar Atef</div>
-              <div class="team-role">Java Research Specialist</div>
-              <p>
-                Researched Java market demand and beginner-friendly projects
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="team-card">
-              <div class="team-photo"><i class="fas fa-user"></i></div>
-              <div class="team-name">Eriny Hany</div>
-              <div class="team-role">Platform Strategy</div>
-              <p>
-                Developed platform differentiation strategy and success stories
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-4">
-            <div class="team-card">
-              <div class="team-photo"><i class="fas fa-user"></i></div>
-              <div class="team-name">Maram Said</div>
-              <div class="team-role">Educational Methodology</div>
-              <p>
-                Designed learning materials structure and educational content
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4">
-            <div class="team-card">
-              <div class="team-photo"><i class="fas fa-user"></i></div>
-              <div class="team-name">Abdelrahman Tarek</div>
-              <div class="team-role">Founder & Vision Keeper</div>
-              <p>Academy founder, maintains mission and strategic direction</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.graduate-card:hover {
+  transform: perspective(800px) rotateY(10deg) translateZ(15px);
+  box-shadow: 0 15px 30px var(--cosmic-glow);
+}
 
-    <!-- Slide 11: Call to Action -->
-    <section class="slide" id="slide-11">
-      <div class="slide-content">
-        <h2>Start Your Java Journey Today!</h2>
-        <p class="mt-4 mb-5">
-          Join 15,000+ students who chose the practical path to Java mastery
-        </p>
+.graduate-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--javanova-orange);
+  transform: translateZ(20px);
+}
 
-        <div class="mt-5">
-          <a
-            href="https://ahmedtyson.github.io/JavaNova-project/javanova.html"
-            target="_blank"
-            class="cta-button"
-          >
-            <i class="fas fa-rocket me-2"></i>Start Learning Java
-          </a>
-          <a
-            href="https://discord.gg/javanova"
-            target="_blank"
-            class="cta-button"
-            style="
-              background: linear-gradient(
-                45deg,
-                var(--javanova-purple),
-                #6a11cb
-              );
-            "
-          >
-            <i class="fas fa-users me-2"></i>Join Our Community
-          </a>
-        </div>
+.graduate-role {
+  font-weight: 600;
+  color: var(--javanova-purple);
+  margin-bottom: 1rem;
+}
 
-        <div class="mt-5">
-          <div class="d-flex justify-content-center gap-4 flex-wrap">
-            <div class="text-center">
-              <div class="fs-1 mb-2"><i class="fas fa-graduation-cap"></i></div>
-              <h5>Beginner Friendly</h5>
-            </div>
-            <div class="text-center">
-              <div class="fs-1 mb-2">
-                <i class="fas fa-project-diagram"></i>
-              </div>
-              <h5>Real Projects</h5>
-            </div>
-            <div class="text-center">
-              <div class="fs-1 mb-2"><i class="fas fa-handshake"></i></div>
-              <h5>Community Support</h5>
-            </div>
-            <div class="text-center">
-              <div class="fs-1 mb-2"><i class="fas fa-briefcase"></i></div>
-              <h5>Job Ready</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.graduate-description {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  min-height: 80px;
+}
 
-    <!-- Slide 12: Thank You - UPDATED -->
-    <section class="slide" id="slide-12">
-      <div class="slide-content">
-        <div class="thank-you-content">
-          <h1 class="mb-4">Thank You!</h1>
-          <p class="lead mb-5">
-            For joining our journey to transform Java education
-          </p>
+.graduate-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
 
-          <div class="mb-5">
-            <div class="display-1 text-warning mb-4">
-              <i class="fas fa-heart"></i>
-            </div>
-            <h3>Special thanks to our amazing community of learners</h3>
-          </div>
+.profile-link {
+  display: flex;
+  align-items: center;
+  color: var(--javanova-orange);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
 
-          <div class="row mt-5">
-            <div class="col-md-6 mb-4">
-              <div class="feature-card">
-                <h4>Connect With Us</h4>
-                <div class="d-flex justify-content-center gap-3 mt-3">
-                  <a
-                    href="https://discord.gg/javanova"
-                    target="_blank"
-                    class="social-icon discord"
-                  >
-                    <i class="fab fa-discord"></i>
-                  </a>
-                  <a
-                    href="https://t.me/javanova"
-                    target="_blank"
-                    class="social-icon telegram"
-                  >
-                    <i class="fab fa-telegram"></i>
-                  </a>
-                  <a
-                    href="https://linkedin.com/company/javanova"
-                    target="_blank"
-                    class="social-icon linkedin"
-                  >
-                    <i class="fab fa-linkedin-in"></i>
-                  </a>
-                  <a
-                    href="https://github.com/javanova"
-                    target="_blank"
-                    class="social-icon github"
-                  >
-                    <i class="fab fa-github"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-4">
-              <div class="feature-card">
-                <h4>Contact Information</h4>
-                <p class="mt-3">
-                  <i class="fas fa-envelope me-2"></i>contact@javanova.academy
-                </p>
-                <p>
-                  <i class="fas fa-globe me-2"></i
-                  ><a
-                    href="https://ahmedtyson.github.io/JavaNova-project/javanova.html"
-                    target="_blank"
-                    >JavaNova Website</a
-                  >
-                </p>
-                <p><i class="fas fa-map-marker-alt me-2"></i>Cairo, Egypt</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+.profile-link:hover {
+  color: white;
+  transform: translateY(-3px);
+}
 
-    <!-- Navigation -->
-    <div class="navigation-controls">
-      <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
-        <i class="fas fa-chevron-up"></i>
-      </button>
-      <button class="nav-btn" id="nextBtn" aria-label="Next slide">
-        <i class="fas fa-chevron-down"></i>
-      </button>
-    </div>
+.profile-link i {
+  margin-right: 5px;
+}
 
-    <!-- Slide indicators -->
-    <div class="slide-indicators" id="slideIndicators"></div>
+.cta-button {
+  display: inline-block; /* allow width/margin */
+  text-decoration: none; /* remove underline */
+  text-align: center;
+  background: linear-gradient(
+    45deg,
+    var(--javanova-orange),
+    var(--javanova-purple)
+  );
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 1rem;
+  transform: translateZ(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
 
-    <!-- Slide counter -->
-    <div class="slide-counter">
-      <span id="currentSlide">1</span> of <span id="totalSlides">12</span>
-    </div>
+.cta-button:hover {
+  transform: scale(1.05) translateZ(10px);
+  box-shadow: 0 10px 25px var(--cosmic-glow);
+}
 
-    <!-- New Progress Bar -->
-    <div class="progress-container">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 2px solid var(--javanova-purple);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateY(0deg) translateZ(0);
+  text-align: center;
+  height: 100%;
+}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
-  </body>
-</html>
+.stat-card:hover {
+  transform: perspective(800px) rotateY(5deg) translateZ(15px);
+  box-shadow: 0 10px 30px var(--cosmic-purple-glow);
+}
+
+.stat-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--javanova-orange);
+  transform: translateZ(20px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--javanova-orange);
+  margin-bottom: 0.5rem;
+  transform: translateZ(20px);
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  color: white;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 2px solid var(--javanova-orange);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateX(0deg) translateZ(0);
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card:hover {
+  transform: perspective(800px) rotateX(5deg) translateZ(15px);
+  box-shadow: 0 15px 30px var(--cosmic-glow);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--javanova-purple);
+  transform: translateZ(20px);
+}
+
+.team-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 2px solid var(--javanova-orange);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateY(0deg) translateZ(0);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.team-card:hover {
+  transform: perspective(800px) rotateY(5deg) translateZ(15px);
+  box-shadow: 0 15px 30px var(--cosmic-glow);
+}
+
+.team-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--javanova-purple);
+  margin: 0 auto 1rem;
+  transform: translateZ(30px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--javanova-dark);
+  color: var(--javanova-orange);
+  font-size: 3rem;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+.team-name {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--javanova-orange);
+  transform: translateZ(20px);
+}
+
+.team-role {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--javanova-purple);
+  transform: translateZ(20px);
+}
+
+.thank-you-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Cosmic Background Elements */
+.cosmic-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 140, 66, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(139, 92, 246, 0.8), transparent),
+    radial-gradient(2px 2px at 160px 30px, #eee, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: sparkle 3s linear infinite;
+}
+
+@keyframes sparkle {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
+
+.nova-burst {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    var(--javanova-orange) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+/* Navigation */
+.navigation-controls {
+  position: fixed;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--javanova-orange);
+  color: var(--javanova-orange);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  transform: translateZ(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn:hover {
+  background: var(--javanova-orange);
+  color: white;
+  transform: scale(1.1) translateZ(10px);
+}
+
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.slide-indicators {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 100;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateZ(0);
+}
+
+.indicator.active {
+  background: var(--javanova-orange);
+  transform: scale(1.2) translateZ(10px);
+}
+
+.slide-counter {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  transform: translateZ(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Platform mockup */
+.platform-mockup {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--javanova-orange);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  backdrop-filter: blur(10px);
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateY(0deg) translateZ(0);
+  transition: all 0.5s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.platform-mockup:hover {
+  transform: perspective(800px) rotateY(5deg) translateZ(15px);
+}
+
+.browser-bar {
+  background: rgba(255, 255, 255, 0.2);
+  height: 30px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  transform: translateZ(20px);
+}
+
+.browser-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.dot-red {
+  background: #ff5f57;
+}
+.dot-yellow {
+  background: #ffbd2e;
+}
+.dot-green {
+  background: #28c940;
+}
+
+.website-content {
+  background: rgba(255, 255, 255, 0.1);
+  height: 300px;
+  border-radius: 0 0 8px 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(10px);
+}
+
+.website-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.grid-item {
+  background: rgba(139, 92, 246, 0.2);
+  border-radius: 8px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.3s;
+  transform: translateZ(0);
+}
+
+.grid-item:hover {
+  transform: translateY(-5px) translateZ(10px);
+  background: rgba(139, 92, 246, 0.4);
+}
+
+.grid-item:nth-child(1) {
+  grid-column: span 2;
+  height: 100px;
+}
+.grid-item:nth-child(2) {
+  grid-column: span 2;
+  height: 100px;
+}
+.grid-item:nth-child(3) {
+  grid-column: span 1;
+}
+.grid-item:nth-child(4) {
+  grid-column: span 1;
+}
+.grid-item:nth-child(5) {
+  grid-column: span 1;
+}
+.grid-item:nth-child(6) {
+  grid-column: span 1;
+}
+
+/* Social Media Icons */
+.social-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  background: transparent; /* remove semi-opaque fill */
+  border: 2px solid;
+  border-radius: 60%; /* perfect circle */
+  color: var(--javanova-orange); /* outline & icon color */
+  font-size: 1.8rem;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--javanova-orange);
+  color: white;
+  box-shadow: 0 0 15px var(--cosmic-glow);
+}
+
+.discord {
+  color: #5865f2;
+}
+.discord:hover {
+  background: #5865f2;
+}
+
+.telegram {
+  color: #0088cc;
+}
+.telegram:hover {
+  background: #0088cc;
+}
+
+.linkedin {
+  color: #0077b5;
+}
+.linkedin:hover {
+  background: #0077b5;
+}
+
+.github {
+  border-color: #333;
+}
+.github:hover {
+  background: #333;
+}
+
+/* Bar Chart */
+.chart-container {
+  height: 300px;
+  position: relative;
+  margin: 2rem auto;
+  max-width: 800px;
+  perspective: 1000px;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 100%;
+  padding: 0 2rem;
+  transform-style: preserve-3d;
+  transform: rotateX(45deg);
+}
+
+.bar {
+  width: 60px;
+  background: linear-gradient(
+    to top,
+    var(--javanova-purple),
+    var(--javanova-orange)
+  );
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  transition: height 1s ease-in-out;
+  box-shadow: 0 0 20px var(--cosmic-purple-glow);
+  transform: translateZ(20px);
+}
+
+.bar-label {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  transform: translateZ(30px);
+}
+
+.bar-value {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  color: var(--javanova-orange);
+  transform: translateZ(30px);
+}
+
+/* New Statistics Section */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 900px;
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 200px;
+  max-width: 220px;
+}
+
+/* Success Stories Intro */
+.success-intro {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border-left: 4px solid var(--javanova-orange);
+}
+
+/* Our Story Section - ENHANCED */
+.story-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.story-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 2px solid var(--javanova-orange);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateY(0deg) translateZ(0);
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.story-card:hover {
+  transform: perspective(800px) rotateY(5deg) translateZ(15px);
+  box-shadow: 0 15px 30px var(--cosmic-glow);
+}
+
+.story-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--javanova-orange);
+  transform: translateZ(20px);
+}
+
+.story-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding-left: 30px;
+}
+
+.story-timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--javanova-orange);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 20px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--javanova-purple);
+  border: 2px solid var(--javanova-orange);
+}
+
+.milestone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.milestone-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border-left: 4px solid var(--javanova-orange);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.milestone-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px var(--cosmic-purple-glow);
+}
+
+.milestone-date {
+  font-weight: 600;
+  color: var(--javanova-orange);
+  margin-bottom: 0.5rem;
+}
+
+.milestone-icon {
+  font-size: 2rem;
+  color: var(--javanova-purple);
+  margin-bottom: 1rem;
+}
+
+.philosophy {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--javanova-orange);
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 3px solid var(--javanova-purple);
+  background: rgba(139, 92, 246, 0.1);
+}
+
+/* remove underline and default blue on slide 11 buttons */
+#slide-11 .cta-button a {
+  text-decoration: none !important;
+  color: inherit !important;
+  outline: none !important;
+}
+#slide-11 .cta-button a:hover {
+  text-decoration: none;
+  /* optionally force a hover color: */
+  color: #fff;
+}
+
+/* CUSTOM CURSOR CSS */
+* {
+  cursor: none;
+}
+.cursor,
+.cursor-follower {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.05s ease, background 0.1s ease, border-color 0.1s ease,
+    box-shadow 0.1s ease;
+}
+.cursor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--javanova-purple);
+  box-shadow: 0 0 5px var(--javanova-purple), 0 0 10px var(--javanova-purple);
+}
+.cursor-follower {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  border-radius: 50%;
+}
+
+/* states */
+.cursor.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background: var(--javanova-orange);
+  box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova-orange);
+}
+.cursor.link {
+  transform: translate(-50%, -50%) scale(1.2);
+  background: var(--javanova-purple);
+  box-shadow: 0 0 10px var(--javanova-purple), 0 0 20px var(--javanova-purple);
+}
+.cursor.click {
+  transform: translate(-50%, -50%) scale(0.8);
+  background: var(--javanova-pink);
+  box-shadow: 0 0 10px var(--javanova-pink), 0 0 20px var(--javanova-pink);
+}
+.cursor-follower.hover {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(255, 140, 66, 0.5);
+}
+.cursor-follower.link {
+  width: 50px;
+  height: 50px;
+  border-color: rgba(106, 13, 173, 0.5);
+}
+
+/* =============================================================================
+   Disable custom cursor on touch devices
+   ========================================================================== */
+@media (hover: none), (pointer: coarse) {
+  .cursor,
+  .cursor-follower {
+    display: none !important;
+  }
+}
+
+/* =============================================================================
+   Tablet & small-laptop (≤1200px)
+   – collapse our custom grids to one column
+   – stack any Bootstrap .row into a single column
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .story-section,
+  .content-grid,
+  .milestone-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  /* stack Bootstrap columns */
+  .slide-content > .row {
+    flex-direction: column;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* cards stretch full width */
+  .story-card,
+  .feature-card,
+  .milestone-card,
+  .graduate-card,
+  .step-card,
+  .stat-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* =============================================================================
+   Mobile (≤768px)
+   – reduce padding & font sizes
+   – move nav controls to bottom
+   ========================================================================== */
+@media (max-width: 768px) {
+  .slide {
+    padding: 1rem;
+  }
+  .slide-content {
+    padding: 1rem;
+  }
+
+  .slide-content h1 {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+  }
+  .slide-content h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+  .slide-content p {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+  }
+
+  .navigation-controls {
+    top: auto;
+    bottom: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+/* =============================================================================
+   Phone (≤480px)
+   – further shrink text & buttons
+   ========================================================================== */
+@media (max-width: 480px) {
+  .slide-title h1 {
+    font-size: 1.5rem;
+  }
+  .cta-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Hide custom cursor on phones */
+  .cursor,
+  .cursor-follower {
+    display: none !important;
+  }
+
+  /* Smaller nova burst */
+  .nova-burst {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* Mobile bar chart tweaks */
+  .bar {
+    width: 30px;
+  }
+  .bar-label,
+  .bar-value {
+    font-size: 0.7rem;
+  }
+
+  /* Better platform mockup grid */
+  .website-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  .grid-item {
+    height: 50px;
+    font-size: 0.8rem;
+  }
+
+  /* Smaller team photos */
+  .team-photo {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+
+  /* Stack CTA-links vertically */
+  .cta-button {
+    display: block;
+    margin: 1rem auto;
+    width: 90%;
+  }
+}
