@@ -1,7 +1,7 @@
 # 🚀 **JavaNova Academy - Complete Educational Platform**
 
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-2.0.0-green.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.4.6-green.svg)](CHANGELOG.md)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 [![Responsive](https://img.shields.io/badge/responsive-yes-blue.svg)](#)
 [![Themes](https://img.shields.io/badge/themes-4-purple.svg)](#)
@@ -85,7 +85,7 @@ This project is built on extensive research conducted by our university team:
 ### **🔬 Research Contributors**
 - **Abdelrahman**: Academy founding story and youth-driven mission
 - **Omar**: Java technical analysis and industry adoption research
-- **Irene**: Platform competitive analysis and success story validation
+- **Eriny**: Platform competitive analysis and success story validation
 - **Maram**: Educational methodology framework and learning materials
 - **Ahmed**: Technical implementation and system architecture
 
