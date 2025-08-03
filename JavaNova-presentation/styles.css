@@ -27,16 +27,20 @@ body {
   overflow-y: scroll;
 }
 
+/* =============================================================================
+   MAIN SLIDE STYLES - Enhanced for better content containment
+   ========================================================================== */
 .slide {
   min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   scroll-snap-align: start;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .slide-content {
@@ -46,6 +50,72 @@ body {
   text-align: center;
   padding: 2rem;
   position: relative;
+  min-height: fit-content;
+  box-sizing: border-box;
+  height: auto;
+  overflow: visible;
+}
+
+/* Apply background to all slides except slide 1 */
+.slide:not(#slide-1) {
+  background: linear-gradient(
+    135deg,
+    var(--javanova-darker) 0%,
+    var(--javanova-dark) 100%
+  );
+}
+
+/* Content-heavy slides with extra height */
+#slide-2,
+#slide-7,
+#slide-8,
+#slide-9,
+#slide-10 {
+  min-height: 140vh;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
+/* Standard slides with normal height */
+#slide-3,
+#slide-4,
+#slide-5,
+#slide-6 {
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
+/* Special handling for content-heavy slides */
+#slide-2, /* Our Story */
+#slide-7, /* Success Stories */
+#slide-8, /* Impact Statistics */
+#slide-9, /* Website Features */
+#slide-10 /* Meet Our Team */ {
+  min-height: 140vh; /* Extra height for content-heavy slides */
+  padding: 4rem 2rem;
+  align-items: flex-start; /* Align content to top instead of center */
+  padding-top: 2rem; /* Ensure some top spacing */
+  background: linear-gradient(
+    135deg,
+    var(--javanova-darker) 0%,
+    var(--javanova-dark) 100%
+  );
+}
+
+#slide-2 .slide-content,
+#slide-6 .slide-content,
+#slide-7 .slide-content,
+#slide-8 .slide-content,
+#slide-9 .slide-content,
+#slide-10 .slide-content {
+  padding: 2rem;
+  margin-top: 2rem; /* Add top margin for better positioning */
+  background: linear-gradient(
+    135deg,
+    var(--javanova-darker) 0%,
+    var(--javanova-dark) 100%
+  );
+  border-radius: 15px; /* Optional: adds rounded corners for better visual appeal */
 }
 
 .slide-content h1,
@@ -232,8 +302,8 @@ body {
 }
 
 .cta-button {
-  display: inline-block; /* allow width/margin */
-  text-decoration: none; /* remove underline */
+  display: inline-block;
+  text-decoration: none;
   text-align: center;
   background: linear-gradient(
     45deg,
@@ -520,6 +590,28 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Progress Bar */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 100;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--javanova-orange),
+    var(--javanova-purple)
+  );
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
 /* Platform mockup */
 .platform-mockup {
   background: rgba(255, 255, 255, 0.1);
@@ -631,10 +723,10 @@ body {
   place-items: center;
   width: 50px;
   height: 50px;
-  background: transparent; /* remove semi-opaque fill */
+  background: transparent;
   border: 2px solid;
-  border-radius: 60%; /* perfect circle */
-  color: var(--javanova-orange); /* outline & icon color */
+  border-radius: 60%;
+  color: var(--javanova-orange);
   font-size: 1.8rem;
   margin: 0 10px;
   transition: all 0.3s ease;
@@ -791,41 +883,6 @@ body {
   transform: translateZ(20px);
 }
 
-.story-timeline {
-  position: relative;
-  max-width: 800px;
-  margin: 2rem auto;
-  padding-left: 30px;
-}
-
-.story-timeline::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 0;
-  height: 100%;
-  width: 2px;
-  background: var(--javanova-orange);
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-left: 20px;
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -8px;
-  top: 5px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--javanova-purple);
-  border: 2px solid var(--javanova-orange);
-}
-
 .milestone-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -859,28 +916,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.philosophy {
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--javanova-orange);
-  margin: 1.5rem 0;
-  padding: 1rem;
-  border-left: 3px solid var(--javanova-purple);
-  background: rgba(139, 92, 246, 0.1);
-}
-
-/* remove underline and default blue on slide 11 buttons */
-#slide-11 .cta-button a {
-  text-decoration: none !important;
-  color: inherit !important;
-  outline: none !important;
-}
-#slide-11 .cta-button a:hover {
-  text-decoration: none;
-  /* optionally force a hover color: */
-  color: #fff;
-}
-
 /* CUSTOM CURSOR CSS */
 * {
   cursor: none;
@@ -908,7 +943,6 @@ body {
   border-radius: 50%;
 }
 
-/* states */
 .cursor.hover {
   transform: translate(-50%, -50%) scale(1.5);
   background: var(--javanova-orange);
@@ -947,19 +981,15 @@ body {
 
 /* =============================================================================
    Tablet & small-laptop (≤1200px)
-   – collapse our custom grids to one column
-   – stack any Bootstrap .row into a single column
    ========================================================================== */
 @media (max-width: 1200px) {
   .story-section,
-  .content-grid,
   .milestone-grid {
     display: grid;
     grid-template-columns: 1fr !important;
     gap: 1rem;
   }
 
-  /* stack Bootstrap columns */
   .slide-content > .row {
     flex-direction: column;
   }
@@ -969,7 +999,6 @@ body {
     gap: 1rem;
   }
 
-  /* cards stretch full width */
   .story-card,
   .feature-card,
   .milestone-card,
@@ -983,15 +1012,37 @@ body {
 
 /* =============================================================================
    Mobile (≤768px)
-   – reduce padding & font sizes
-   – move nav controls to bottom
    ========================================================================== */
 @media (max-width: 768px) {
   .slide {
-    padding: 1rem;
+    padding: 2rem 1rem;
+    min-height: 110vh;
   }
+
   .slide-content {
-    padding: 1rem;
+    padding: 2rem 1rem;
+  }
+
+  #slide-2,
+  #slide-6,
+  #slide-7,
+  #slide-8,
+  #slide-9,
+  #slide-10 {
+    min-height: 130vh;
+    padding: 3rem 1rem;
+    align-items: flex-start;
+    padding-top: 1rem;
+  }
+
+  #slide-2 .slide-content,
+  #slide-6 .slide-content,
+  #slide-7 .slide-content,
+  #slide-8 .slide-content,
+  #slide-9 .slide-content,
+  #slide-10 .slide-content {
+    padding: 2rem 1rem;
+    margin-top: 1rem;
   }
 
   .slide-content h1 {
@@ -1013,30 +1064,56 @@ body {
 
 /* =============================================================================
    Phone (≤480px)
-   – further shrink text & buttons
    ========================================================================== */
 @media (max-width: 480px) {
+  .slide {
+    min-height: 105vh;
+    padding: 1.5rem 1rem;
+  }
+
+  #slide-2,
+  #slide-6,
+  #slide-7,
+  #slide-8,
+  #slide-9,
+  #slide-10 {
+    min-height: 120vh;
+    padding: 2rem 1rem;
+    align-items: flex-start;
+    padding-top: 1rem;
+  }
+
+  #slide-2 .slide-content,
+  #slide-6 .slide-content,
+  #slide-7 .slide-content,
+  #slide-8 .slide-content,
+  #slide-9 .slide-content,
+  #slide-10 .slide-content {
+    padding: 1.5rem 1rem;
+    margin-top: 1rem;
+  }
+
   .slide-title h1 {
     font-size: 1.5rem;
   }
   .cta-button {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
+    display: block;
+    margin: 1rem auto;
+    width: 90%;
   }
 
-  /* Hide custom cursor on phones */
   .cursor,
   .cursor-follower {
     display: none !important;
   }
 
-  /* Smaller nova burst */
   .nova-burst {
     width: 150px;
     height: 150px;
   }
 
-  /* Mobile bar chart tweaks */
   .bar {
     width: 30px;
   }
@@ -1045,7 +1122,6 @@ body {
     font-size: 0.7rem;
   }
 
-  /* Better platform mockup grid */
   .website-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
@@ -1056,17 +1132,9 @@ body {
     font-size: 0.8rem;
   }
 
-  /* Smaller team photos */
   .team-photo {
     width: 80px;
     height: 80px;
     font-size: 2rem;
-  }
-
-  /* Stack CTA-links vertically */
-  .cta-button {
-    display: block;
-    margin: 1rem auto;
-    width: 90%;
   }
 }
