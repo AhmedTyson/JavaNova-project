@@ -916,6 +916,78 @@ body {
   margin-bottom: 1rem;
 }
 
+/* Equal height for step cards in Slide 4 */
+#slide-4 .row {
+  display: flex;
+  align-items: stretch;
+}
+
+#slide-4 .col-md-4 {
+  display: flex;
+  flex-direction: column;
+}
+
+#slide-4 .step-card {
+  flex: 1 1 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Equal height for cards in Slide 6 */
+#slide-6 .row {
+  display: flex;
+  align-items: stretch;
+}
+#slide-6 .col-md-3,
+#slide-6 .col-lg-3,
+#slide-6 .col-md-4 {
+  display: flex;
+  flex-direction: column;
+}
+#slide-6 .step-card {
+  flex: 1 1 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Equal height for cards in Slide 9 */
+#slide-9 .row {
+  display: flex;
+  align-items: stretch;
+}
+#slide-9 .col-md-4 {
+  display: flex;
+  flex-direction: column;
+}
+#slide-9 .feature-card {
+  flex: 1 1 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Equal height for cards in Slide 12 */
+#slide-12 .row {
+  display: flex;
+  align-items: stretch;
+}
+#slide-12 .col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
+#slide-12 .feature-card {
+  flex: 1 1 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 /* CUSTOM CURSOR CSS */
 * {
   cursor: none;
@@ -1138,3 +1210,4 @@ body {
     font-size: 2rem;
   }
 }
+
