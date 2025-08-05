@@ -1,10 +1,10 @@
-/* ============================================================================
+/* ========================================================================
    JavaNova Presentation - Main Stylesheet
-   ========================================================================== */
+   ======================================================================== */
 
-/* ============================================================================
-   Main Variables
-   ========================================================================== */
+/* =========================
+   1. CSS Variables
+   ========================= */
 :root {
   --javanova-orange: #ff8c42;
   --javanova-purple: #8b5cf6;
@@ -12,442 +12,18 @@
   --javanova-darker: #0d0d1f;
   --cosmic-glow: rgba(255, 140, 66, 0.3);
   --cosmic-purple-glow: rgba(139, 92, 246, 0.3);
-  --vh: 1vh; /* Viewport height variable for fullscreen mode */
+  --vh: 1vh;
 }
 
-/* ============================================================================
-   Fullscreen Mode Support
-   ========================================================================== */
-/* Standard fullscreen styles */
-:fullscreen {
-  width: 100vw !important;
-  height: 100vh !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: auto !important;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-/* Browser-specific fullscreen prefixes */
-:-webkit-full-screen {
-  width: 100vw !important;
-  height: 100vh !important;
-  margin: 0 !important;
-  overflow: auto !important;
-}
-
-:-moz-full-screen {
-  width: 100vw !important;
-  height: 100vh !important;
-  margin: 0 !important;
-  overflow: auto !important;
-}
-
-:-ms-fullscreen {
-  width: 100vw !important;
-  height: 100vh !important;
-  margin: 0 !important;
-  overflow: auto !important;
-}
-
-/* F11 fullscreen mode detection and optimization */
-.f11-fullscreen {
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-}
-
-.f11-fullscreen .slide {
-  min-height: 100vh;
-  padding: 2rem;
-}
-
-.f11-fullscreen .slide-content {
-  max-width: 90vw;
-  padding: 1.5rem;
-}
-
-/* Fullscreen mode class for JavaScript-triggered optimizations */
-.fullscreen-mode {
-  font-size: 100%;
-  line-height: 1.7;
-}
-
-.fullscreen-mode .slide-content {
-  max-width: none;
-  width: 90vw;
-  padding: 2rem;
-}
-
-.fullscreen-mode .navigation-controls {
-  padding: 0 3rem;
-}
-
-.fullscreen-mode .slide-indicators {
-  bottom: 3rem;
-}
-
-/* Enhanced fullscreen / F11 detection & viewport optimization */
-:fullscreen,
-:-webkit-full-screen,
-:-moz-full-screen,
-:-ms-fullscreen,
-.f11-detected {
-  width: 100vw !important;
-  height: calc(var(--vh) * 100) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-}
-
-body.f11-detected,
-body.fullscreen-mode {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Dynamic content scaling */
-.f11-detected .slide-content,
-.fullscreen-mode .slide-content {
-  max-width: min(95vw, 1800px);
-  width: 95vw;
-  padding: clamp(1rem, 3vw, 4rem);
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* Improved grid responsiveness */
-.f11-detected .stats-container,
-.fullscreen-mode .stats-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(250px, 25vw), 1fr));
-  gap: clamp(1rem, 2vw, 3rem);
-  width: 90vw;
-  max-width: none;
-}
-
-.f11-detected .story-section,
-.fullscreen-mode .story-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(350px, 30vw), 1fr));
-  gap: clamp(1.5rem, 2.5vw, 3rem);
-  width: 92vw;
-  margin: 2rem auto;
-}
-
-/* ============================================================================
-   Large Screen Media Queries
-   ========================================================================== */
-/* Full HD and larger laptops (1920px+) */
-@media screen and (min-width: 1920px) {
-  .slide-content {
-    max-width: 1200px;
-    padding: 2rem;
-  }
-
-  .slide-content h1 {
-    font-size: clamp(3rem, 5vw, 5rem);
-  }
-
-  .slide-content h2 {
-    font-size: clamp(2.5rem, 4vw, 4rem);
-  }
-
-  .slide-content p {
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    max-width: 80ch;
-  }
-
-  .floating-card,
-  .step-card,
-  .graduate-card,
-  .stat-card,
-  .feature-card,
-  .team-card,
-  .story-card {
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .step-number {
-    width: 60px;
-    height: 60px;
-    font-size: 1.8rem;
-  }
-
-  .team-photo {
-    width: 150px;
-    height: 150px;
-    font-size: 4rem;
-  }
-
-  .stat-icon,
-  .feature-icon {
-    font-size: 4rem;
-  }
-
-  .stat-number {
-    font-size: 3rem;
-  }
-
-  .navigation-controls {
-    padding: 0 3rem;
-  }
-
-  .nav-btn {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-  }
-
-  .slide-indicators {
-    bottom: 3rem;
-  }
-
-  .indicator {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-/* 2K/QHD screens (2560px+) */
-@media screen and (min-width: 2560px) {
-  .slide-content {
-    max-width: 2200px;
-    padding: 4rem;
-  }
-
-  .slide-content h1 {
-    font-size: clamp(3.5rem, 5vw, 6rem);
-  }
-
-  .slide-content h2 {
-    font-size: clamp(3rem, 4vw, 5rem);
-  }
-
-  .slide-content p {
-    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-    line-height: 1.8;
-  }
-
-  .floating-card,
-  .step-card,
-  .graduate-card,
-  .stat-card,
-  .feature-card,
-  .team-card,
-  .story-card {
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .team-photo {
-    width: 180px;
-    height: 180px;
-    font-size: 5rem;
-  }
-
-  .stat-icon,
-  .feature-icon {
-    font-size: 5rem;
-  }
-
-  .nav-btn {
-    width: 70px;
-    height: 70px;
-    font-size: 1.8rem;
-  }
-
-  .indicator {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-/* 4K screens (3840px+) */
-@media screen and (min-width: 3840px) {
-  .slide-content {
-    max-width: 3200px;
-    padding: 5rem;
-  }
-
-  .slide-content h1 {
-    font-size: clamp(4rem, 5vw, 8rem);
-  }
-
-  .slide-content h2 {
-    font-size: clamp(3.5rem, 4vw, 6rem);
-  }
-
-  .slide-content p {
-    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
-    line-height: 1.9;
-  }
-
-  .floating-card,
-  .step-card,
-  .graduate-card,
-  .stat-card,
-  .feature-card,
-  .team-card,
-  .story-card {
-    padding: 3rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .team-photo {
-    width: 220px;
-    height: 220px;
-    font-size: 6rem;
-  }
-
-  .stat-icon,
-  .feature-icon {
-    font-size: 6rem;
-  }
-
-  .stat-number {
-    font-size: 4rem;
-  }
-
-  .nav-btn {
-    width: 80px;
-    height: 80px;
-    font-size: 2rem;
-  }
-
-  .indicator {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-/* Ultra-wide screens (3440px+) */
-@media screen and (min-width: 3440px) {
-  .slide-content {
-    max-width: min(3000px, 85vw);
-    padding: clamp(3rem, 4vw, 6rem);
-  }
-
-  .f11-detected .stats-container,
-  .fullscreen-mode .stats-container {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    max-width: 90vw;
-  }
-
-  .f11-detected .story-section,
-  .fullscreen-mode .story-section {
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  }
-}
-
-/* Super ultra-wide screens (5120px+) */
-@media screen and (min-width: 5120px) {
-  .slide-content {
-    max-width: min(4500px, 80vw);
-    padding: clamp(4rem, 5vw, 8rem);
-  }
-  .slide-content h1 {
-    font-size: clamp(4rem, 6vw, 12rem);
-  }
-  .slide-content p {
-    font-size: clamp(1.8rem, 3vw, 4rem);
-    max-width: 100ch;
-  }
-}
-
-/* Fullscreen-specific large screen optimizations */
-.fullscreen-mode {
-  /* Enhanced typography for fullscreen viewing */
-}
-
-.fullscreen-mode .slide-content h1 {
-  font-size: clamp(3rem, 6vw, 8rem);
-}
-
-.fullscreen-mode .slide-content h2 {
-  font-size: clamp(2.5rem, 5vw, 6rem);
-}
-
-.fullscreen-mode .slide-content p {
-  font-size: clamp(1.4rem, 3vw, 2.5rem);
-  max-width: 85ch;
-  margin: 0 auto;
-}
-
-/* Grid layout optimization for fullscreen */
-.fullscreen-mode .stats-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: none;
-  width: 90vw;
-  margin: 2rem auto;
-}
-
-.fullscreen-mode .story-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
-  width: 90vw;
-  margin: 3rem auto;
-}
-
-/* Performance optimizations for fullscreen */
-.fullscreen-mode .cosmic-background {
-  will-change: transform;
-}
-
-.fullscreen-mode .stars {
-  animation-duration: 4s;
-}
-
-.fullscreen-mode .nova-burst {
-  animation-duration: 3s;
-}
-
-/* ============================================================================
-   Fallback Styles for Limited Fullscreen Support
-   ========================================================================== */
-@supports not (selector(:fullscreen)) {
-  .fullscreen-fallback {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    background: linear-gradient(
-      135deg,
-      var(--javanova-darker) 0%,
-      var(--javanova-dark) 100%
-    );
-    overflow: auto;
-  }
-}
-
-/* High DPI display optimizations */
-@media screen and (min-resolution: 2dppx) {
-  .fullscreen-mode .slide-content {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
-
-/* ============================================================================
-   Global Reset & Base Styles
-   ========================================================================== */
-/* Universal reset with custom cursor */
+/* =========================
+   2. Global Reset & Base
+   ========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   cursor: none;
 }
-
-/* Main body styling with cosmic gradient background */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(
@@ -463,10 +39,91 @@ body {
   overscroll-behavior: contain;
 }
 
-/* ============================================================================
-   Slide Layout System
-   ========================================================================== */
-/* Main slide container with scroll snap */
+/* =========================
+   3. Fullscreen & F11 Support
+   ========================= */
+:fullscreen,
+:-webkit-full-screen,
+:-moz-full-screen,
+:-ms-fullscreen,
+.f11-detected {
+  width: 100vw !important;
+  height: calc(var(--vh) * 100) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+:fullscreen::-webkit-scrollbar,
+:-webkit-full-screen::-webkit-scrollbar,
+:-moz-full-screen::-webkit-scrollbar,
+:-ms-fullscreen::-webkit-scrollbar,
+.f11-detected::-webkit-scrollbar {
+  display: none;
+}
+body.f11-detected,
+body.fullscreen-mode {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.f11-fullscreen {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+.f11-fullscreen .slide {
+  min-height: 100vh;
+  padding: 2rem;
+}
+.f11-fullscreen .slide-content {
+  max-width: 90vw;
+  padding: 1.5rem;
+}
+.fullscreen-mode {
+  font-size: 100%;
+  line-height: 1.7;
+}
+.fullscreen-mode .slide-content {
+  max-width: none;
+  width: 90vw;
+  padding: 2rem;
+}
+.fullscreen-mode .navigation-controls {
+  padding: 0 3rem;
+}
+.fullscreen-mode .slide-indicators {
+  bottom: 3rem;
+}
+.f11-detected .slide-content,
+.fullscreen-mode .slide-content {
+  max-width: min(95vw, 1800px);
+  width: 95vw;
+  padding: clamp(1rem, 3vw, 4rem);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.f11-detected .stats-container,
+.fullscreen-mode .stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 25vw), 1fr));
+  gap: clamp(1rem, 2vw, 3rem);
+  width: 90vw;
+  max-width: none;
+}
+.f11-detected .story-section,
+.fullscreen-mode .story-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 30vw), 1fr));
+  gap: clamp(1.5rem, 2.5vw, 3rem);
+  width: 92vw;
+  margin: 2rem auto;
+}
+
+/* =========================
+   4. Slide Layout System
+   ========================= */
 .slide {
   min-height: 100vh;
   width: 100%;
@@ -479,11 +136,8 @@ body {
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
-  /* ensure clicking #slide-X lands it at mid-viewport */
   scroll-margin-block-start: 50vh;
 }
-
-/* Content wrapper within slides */
 .slide-content {
   max-width: 1200px;
   width: 100%;
@@ -496,8 +150,6 @@ body {
   height: auto;
   overflow: visible;
 }
-
-/* Background for all slides except the first one */
 .slide:not(#slide-1) {
   background: linear-gradient(
     135deg,
@@ -505,8 +157,6 @@ body {
     var(--javanova-dark) 100%
   );
 }
-
-/* Content-heavy slides with extra height - centered alignment */
 #slide-2,
 #slide-7,
 #slide-8,
@@ -522,8 +172,6 @@ body {
     var(--javanova-dark) 100%
   );
 }
-
-/* Standard slides with centered alignment */
 #slide-3,
 #slide-4,
 #slide-5,
@@ -532,8 +180,6 @@ body {
   justify-content: center;
   padding: 3rem 2rem;
 }
-
-/* Enhanced slide content styling for specific slides */
 #slide-2 .slide-content,
 #slide-6 .slide-content,
 #slide-7 .slide-content,
@@ -550,18 +196,15 @@ body {
   border-radius: 15px;
 }
 
-/* ============================================================================
-   Typography System
-   ========================================================================== */
-/* Main heading styles with shared properties */
+/* =========================
+   5. Typography
+   ========================= */
 .slide-content h1,
 .slide-content h2 {
   margin-bottom: 1.5rem;
   font-weight: 700;
   line-height: 1.2;
 }
-
-/* Primary heading with gradient text effect */
 .slide-content h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   background: linear-gradient(
@@ -573,27 +216,19 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
-/* Secondary heading styling */
 .slide-content h2 {
   font-size: clamp(2rem, 4vw, 3rem);
 }
-
-/* Paragraph text with responsive sizing */
 .slide-content p {
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   line-height: 1.6;
   max-width: 700px;
   margin: 0 auto;
 }
-
-/* Main title for hero sections */
 .main-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
 }
-
-/* Subtitle with accent color and spacing */
 .subtitle {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 300;
@@ -601,9 +236,9 @@ body {
   letter-spacing: 2px;
 }
 
-/* ============================================================================
-   3D Card Components
-   ========================================================================== */
+/* =========================
+   6. Card Components
+   ========================= */
 /* Floating card with 3D hover effects */
 .floating-card {
   background: rgba(255, 255, 255, 0.1);
@@ -960,9 +595,9 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ============================================================================
+/* =========================
    Interactive Elements
-   ========================================================================== */
+   ========================= */
 /* Call-to-action button with gradient background */
 .cta-button {
   display: inline-block;
@@ -1055,9 +690,9 @@ body {
   background: #333;
 }
 
-/* ============================================================================
+/* =========================
    Layout Containers
-   ========================================================================== */
+   ========================= */
 /* Thank you content wrapper */
 .thank-you-content {
   max-width: 800px;
@@ -1108,9 +743,9 @@ body {
   margin-top: 2rem;
 }
 
-/* ============================================================================
+/* =========================
    Background Effects
-   ========================================================================== */
+   ========================= */
 /* Cosmic background container */
 .cosmic-background {
   position: absolute;
@@ -1177,9 +812,9 @@ body {
   }
 }
 
-/* ============================================================================
+/* =========================
    Navigation System
-   ========================================================================== */
+   ========================= */
 /* Navigation controls container */
 .navigation-controls {
   position: fixed;
@@ -1292,9 +927,9 @@ body {
   transition: width 0.3s ease;
 }
 
-/* ============================================================================
+/* =========================
    Website Mockup Components
-   ========================================================================== */
+   ========================= */
 /* Platform mockup container */
 .platform-mockup {
   background: rgba(255, 255, 255, 0.1);
@@ -1406,9 +1041,9 @@ body {
   grid-column: span 1;
 }
 
-/* ============================================================================
+/* =========================
    Charts & Visualizations
-   ========================================================================== */
+   ========================= */
 /* Chart container with 3D perspective */
 .chart-container {
   height: 300px;
@@ -1467,9 +1102,9 @@ body {
   transform: translateZ(30px);
 }
 
-/* ============================================================================
+/* =========================
    Equal Height Card Layouts
-   ========================================================================== */
+   ========================= */
 /* Equal height cards for slide 4 */
 #slide-4 .row {
   display: flex;
@@ -1556,10 +1191,9 @@ body {
   justify-content: flex-start;
 }
 
-/* ============================================================================
-   Custom Cursor System
-   ========================================================================== */
-/* Base cursor and follower styles */
+/* =========================
+   12. Custom Cursor System
+   ========================= */
 .cursor,
 .cursor-follower {
   position: fixed;
@@ -1569,8 +1203,6 @@ body {
   transition: transform 0.05s ease, background 0.1s ease, border-color 0.1s ease,
     box-shadow 0.1s ease;
 }
-
-/* Main cursor element */
 .cursor {
   width: 20px;
   height: 20px;
@@ -1578,64 +1210,47 @@ body {
   background: var(--javanova-purple);
   box-shadow: 0 0 5px var(--javanova-purple), 0 0 10px var(--javanova-purple);
 }
-
-/* Cursor follower element */
 .cursor-follower {
   width: 40px;
   height: 40px;
   border: 2px solid rgba(139, 92, 246, 0.5);
   border-radius: 50%;
 }
-
-/* Cursor hover state */
 .cursor.hover {
   transform: translate(-50%, -50%) scale(1.5);
   background: var(--javanova-orange);
-  box-shadow: 0 0 10px var(--javanova.orange), 0 0 20px var(--javanova.orange);
+  box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova-orange);
 }
-
-/* Cursor link state */
 .cursor.link {
   transform: translate(-50%, -50%) scale(1.2);
   background: var(--javanova-purple);
   box-shadow: 0 0 10px var(--javanova-purple), 0 0 20px var(--javanova-purple);
 }
-
-/* Cursor click state - fix undefined color variable */
 .cursor.click {
   transform: translate(-50%, -50%) scale(0.8);
   background: var(--javanova-orange);
-  box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova.orange);
+  box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova-orange);
 }
-
-/* Cursor follower hover state */
 .cursor-follower.hover {
   width: 60px;
   height: 60px;
   border-color: rgba(255, 140, 66, 0.5);
 }
-
-/* Cursor follower link state */
 .cursor-follower.link {
   width: 50px;
   height: 50px;
   border-color: rgba(106, 13, 173, 0.5);
 }
 
-/* ============================================================================
-   Responsive Design - Touch Devices
-   ========================================================================== */
-/* Disable custom cursor on touch devices */
+/* =========================
+   13. Responsive Design
+   ========================= */
 @media (hover: none), (pointer: coarse) {
   .cursor,
   .cursor-follower {
     display: none !important;
   }
 }
-
-/* ============================================================================
-   Responsive Design - Tablet & Small Laptop (≤1200px)
-   ========================================================================== */
 @media (max-width: 1200px) {
   /* Story and milestone grid adjustments */
   .story-section,
@@ -1667,10 +1282,6 @@ body {
     margin: 0 auto;
   }
 }
-
-/* ============================================================================
-   Responsive Design - Mobile (≤768px)
-   ========================================================================== */
 @media (max-width: 768px) {
   /* Slide padding and height adjustments */
   .slide {
@@ -1729,10 +1340,6 @@ body {
     padding: 0 1rem;
   }
 }
-
-/* ============================================================================
-   Responsive Design - Phone (≤480px)
-   ========================================================================== */
 @media (max-width: 480px) {
   /* Slide height and padding for phones */
   .slide {
@@ -1824,9 +1431,9 @@ body {
   }
 }
 
-/* ============================================================================
-   Compact Layouts for Content-Heavy Slides
-   ========================================================================== */
+/* =========================
+   14. Compact Layouts for Content-Heavy Slides
+   ========================= */
 /* Compact typography for content-heavy slides */
 #slide-2 .slide-content h1,
 #slide-4 .slide-content h1,
@@ -2059,7 +1666,6 @@ body {
     font-size: 1.5rem;
   }
 }
-
 @media (max-width: 480px) {
   /* Ultra compact for phones on content-heavy slides */
   #slide-2 .step-card,
@@ -2116,3 +1722,122 @@ body {
   margin-top: 0.5rem;
 }
 
+/* =========================
+   16. Team Member Containers
+   ========================= */
+#educational-lead-container,
+#founder-container {
+  width: 350px;
+  height: 280px;
+}
+
+/* =========================
+   17. Fallback Fullscreen Support
+   ========================= */
+@supports not (selector(:fullscreen)) {
+  .fullscreen-fallback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: linear-gradient(
+      135deg,
+      var(--javanova-darker) 0%,
+      var(--javanova-dark) 100%
+    );
+    overflow: auto;
+  }
+}
+
+/* =========================
+   18. High DPI Display
+   ========================= */
+@media screen and (min-resolution: 2dppx) {
+  .fullscreen-mode .slide-content {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+
+
+/* Graduate Cards Layout for Slide 7 */
+      #slide-7 .slide-content {
+        max-width: 1600px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .graduate-row-container {
+        width: 100%;
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 1.5rem;
+        overflow-x: visible;
+        display: flex;
+        justify-content: center;
+      }
+      .graduate-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 2rem;
+        width: 100%;
+        min-width: unset;
+      }
+      .graduate-card {
+        min-width: 320px;
+        max-width: 350px;
+        flex: 1 1 320px;
+      }
+      @media (max-width: 1600px) {
+        #slide-7 .slide-content,
+        .graduate-row-container {
+          max-width: 100vw;
+        }
+        .graduate-row {
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 1400px) {
+        .graduate-card {
+          min-width: 270px;
+        }
+      }
+      @media (max-width: 1200px) {
+        .graduate-card {
+          min-width: 220px;
+        }
+      }
+      @media (max-width: 900px) {
+        .graduate-row {
+          flex-direction: column !important;
+          flex-wrap: nowrap;
+        }
+        .graduate-card {
+          min-width: unset;
+          max-width: 100%;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      /* Success header: stack h2 and intro vertically, center them */
+      #slide-7 .success-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      #slide-7 .success-header h2 {
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      #slide-7 .success-header .success-intro {
+        margin-bottom: 0;
+        text-align: center;
+      }
