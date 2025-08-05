@@ -1,3 +1,6 @@
+/* =============================================================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   ========================================================================== */
 :root {
   --javanova-orange: #ff8c42;
   --javanova-purple: #8b5cf6;
@@ -5,14 +8,440 @@
   --javanova-darker: #0d0d1f;
   --cosmic-glow: rgba(255, 140, 66, 0.3);
   --cosmic-purple-glow: rgba(139, 92, 246, 0.3);
+  --vh: 1vh; /* Dynamic viewport height variable for F11 fixes */
 }
 
+/* =============================================================================
+   FULLSCREEN MODE OPTIMIZATION (F11 Support)
+   ========================================================================== */
+/* Standard fullscreen styles */
+:fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: auto !important;
+}
+
+/* Browser-specific fullscreen prefixes */
+:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  overflow: auto !important;
+}
+
+:-moz-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  overflow: auto !important;
+}
+
+:-ms-fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  overflow: auto !important;
+}
+
+/* F11 fullscreen mode detection and optimization */
+.f11-fullscreen {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.f11-fullscreen .slide {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.f11-fullscreen .slide-content {
+  max-width: 90vw;
+  padding: 1.5rem;
+}
+
+/* Fullscreen mode class for JavaScript-triggered optimizations */
+.fullscreen-mode {
+  font-size: 100%;
+  line-height: 1.7;
+}
+
+.fullscreen-mode .slide-content {
+  max-width: none;
+  width: 90vw;
+  padding: 2rem;
+}
+
+.fullscreen-mode .navigation-controls {
+  padding: 0 3rem;
+}
+
+.fullscreen-mode .slide-indicators {
+  bottom: 3rem;
+}
+
+/* Enhanced fullscreen / F11 detection & viewport optimization */
+:fullscreen,
+:-webkit-full-screen,
+:-moz-full-screen,
+:-ms-fullscreen,
+.f11-detected {
+  width: 100vw !important;
+  height: calc(var(--vh) * 100) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+body.f11-detected,
+body.fullscreen-mode {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Dynamic content scaling */
+.f11-detected .slide-content,
+.fullscreen-mode .slide-content {
+  max-width: min(95vw, 1800px);
+  width: 95vw;
+  padding: clamp(1rem, 3vw, 4rem);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Improved grid responsiveness */
+.f11-detected .stats-container,
+.fullscreen-mode .stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 25vw), 1fr));
+  gap: clamp(1rem, 2vw, 3rem);
+  width: 90vw;
+  max-width: none;
+}
+
+.f11-detected .story-section,
+.fullscreen-mode .story-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 30vw), 1fr));
+  gap: clamp(1.5rem, 2.5vw, 3rem);
+  width: 92vw;
+  margin: 2rem auto;
+}
+
+/* =============================================================================
+   LARGE SCREEN MEDIA QUERIES (Laptop Fullscreen Support)
+   ========================================================================== */
+/* Full HD and larger laptops (1920px+) */
+@media screen and (min-width: 1920px) {
+  .slide-content {
+    max-width: 1200px;
+    padding: 2rem;
+  }
+
+  .slide-content h1 {
+    font-size: clamp(3rem, 5vw, 5rem);
+  }
+
+  .slide-content h2 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+  }
+
+  .slide-content p {
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    max-width: 80ch;
+  }
+
+  .floating-card,
+  .step-card,
+  .graduate-card,
+  .stat-card,
+  .feature-card,
+  .team-card,
+  .story-card {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .team-photo {
+    width: 150px;
+    height: 150px;
+    font-size: 4rem;
+  }
+
+  .stat-icon,
+  .feature-icon {
+    font-size: 4rem;
+  }
+
+  .stat-number {
+    font-size: 3rem;
+  }
+
+  .navigation-controls {
+    padding: 0 3rem;
+  }
+
+  .nav-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .slide-indicators {
+    bottom: 3rem;
+  }
+
+  .indicator {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* 2K/QHD screens (2560px+) */
+@media screen and (min-width: 2560px) {
+  .slide-content {
+    max-width: 2200px;
+    padding: 4rem;
+  }
+
+  .slide-content h1 {
+    font-size: clamp(3.5rem, 5vw, 6rem);
+  }
+
+  .slide-content h2 {
+    font-size: clamp(3rem, 4vw, 5rem);
+  }
+
+  .slide-content p {
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    line-height: 1.8;
+  }
+
+  .floating-card,
+  .step-card,
+  .graduate-card,
+  .stat-card,
+  .feature-card,
+  .team-card,
+  .story-card {
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .team-photo {
+    width: 180px;
+    height: 180px;
+    font-size: 5rem;
+  }
+
+  .stat-icon,
+  .feature-icon {
+    font-size: 5rem;
+  }
+
+  .nav-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
+  }
+
+  .indicator {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* 4K screens (3840px+) */
+@media screen and (min-width: 3840px) {
+  .slide-content {
+    max-width: 3200px;
+    padding: 5rem;
+  }
+
+  .slide-content h1 {
+    font-size: clamp(4rem, 5vw, 8rem);
+  }
+
+  .slide-content h2 {
+    font-size: clamp(3.5rem, 4vw, 6rem);
+  }
+
+  .slide-content p {
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+    line-height: 1.9;
+  }
+
+  .floating-card,
+  .step-card,
+  .graduate-card,
+  .stat-card,
+  .feature-card,
+  .team-card,
+  .story-card {
+    padding: 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .team-photo {
+    width: 220px;
+    height: 220px;
+    font-size: 6rem;
+  }
+
+  .stat-icon,
+  .feature-icon {
+    font-size: 6rem;
+  }
+
+  .stat-number {
+    font-size: 4rem;
+  }
+
+  .nav-btn {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+
+  .indicator {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Ultra-wide screens (3440px+) */
+@media screen and (min-width: 3440px) {
+  .slide-content {
+    max-width: min(3000px, 85vw);
+    padding: clamp(3rem, 4vw, 6rem);
+  }
+
+  .f11-detected .stats-container,
+  .fullscreen-mode .stats-container {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    max-width: 90vw;
+  }
+
+  .f11-detected .story-section,
+  .fullscreen-mode .story-section {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
+}
+
+/* Super ultra-wide screens (5120px+) */
+@media screen and (min-width: 5120px) {
+  .slide-content {
+    max-width: min(4500px, 80vw);
+    padding: clamp(4rem, 5vw, 8rem);
+  }
+  .slide-content h1 {
+    font-size: clamp(4rem, 6vw, 12rem);
+  }
+  .slide-content p {
+    font-size: clamp(1.8rem, 3vw, 4rem);
+    max-width: 100ch;
+  }
+}
+
+/* Fullscreen-specific large screen optimizations */
+.fullscreen-mode {
+  /* Enhanced typography for fullscreen viewing */
+}
+
+.fullscreen-mode .slide-content h1 {
+  font-size: clamp(3rem, 6vw, 8rem);
+}
+
+.fullscreen-mode .slide-content h2 {
+  font-size: clamp(2.5rem, 5vw, 6rem);
+}
+
+.fullscreen-mode .slide-content p {
+  font-size: clamp(1.4rem, 3vw, 2.5rem);
+  max-width: 85ch;
+  margin: 0 auto;
+}
+
+/* Grid layout optimization for fullscreen */
+.fullscreen-mode .stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: none;
+  width: 90vw;
+  margin: 2rem auto;
+}
+
+.fullscreen-mode .story-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  width: 90vw;
+  margin: 3rem auto;
+}
+
+/* Performance optimizations for fullscreen */
+.fullscreen-mode .cosmic-background {
+  will-change: transform;
+}
+
+.fullscreen-mode .stars {
+  animation-duration: 4s;
+}
+
+.fullscreen-mode .nova-burst {
+  animation-duration: 3s;
+}
+
+/* =============================================================================
+   FALLBACK STYLES FOR LIMITED FULLSCREEN SUPPORT
+   ========================================================================== */
+@supports not (selector(:fullscreen)) {
+  .fullscreen-fallback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: linear-gradient(
+      135deg,
+      var(--javanova-darker) 0%,
+      var(--javanova-dark) 100%
+    );
+    overflow: auto;
+  }
+}
+
+/* High DPI display optimizations */
+@media screen and (min-resolution: 2dppx) {
+  .fullscreen-mode .slide-content {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* =============================================================================
+   GLOBAL RESET AND BASE STYLES
+   ========================================================================== */
+/* Universal reset with custom cursor */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none;
 }
 
+/* Main body styling with cosmic gradient background */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(
@@ -20,16 +449,18 @@ body {
     var(--javanova-darker) 0%,
     var(--javanova-dark) 100%
   );
-  color: white;
+  color: #fff;
   overflow-x: hidden;
   height: 100vh;
   scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  scroll-snap-stop: always;
+  overscroll-behavior: contain;
 }
 
 /* =============================================================================
-   MAIN SLIDE STYLES - Enhanced for better content containment
+   SLIDE LAYOUT SYSTEM
    ========================================================================== */
+/* Main slide container with scroll snap */
 .slide {
   min-height: 100vh;
   width: 100%;
@@ -37,12 +468,16 @@ body {
   align-items: center;
   justify-content: center;
   padding: 3rem 2rem;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
+  /* ensure clicking #slide-X lands it at mid-viewport */
+  scroll-margin-block-start: 50vh;
 }
 
+/* Content wrapper within slides */
 .slide-content {
   max-width: 1200px;
   width: 100%;
@@ -56,7 +491,7 @@ body {
   overflow: visible;
 }
 
-/* Apply background to all slides except slide 1 */
+/* Background for all slides except the first one */
 .slide:not(#slide-1) {
   background: linear-gradient(
     135deg,
@@ -65,36 +500,16 @@ body {
   );
 }
 
-/* Content-heavy slides with extra height */
+/* Content-heavy slides with extra height - centered alignment */
 #slide-2,
 #slide-7,
 #slide-8,
 #slide-9,
 #slide-10 {
   min-height: 140vh;
-  align-items: flex-start;
-  padding-top: 2rem;
-}
-
-/* Standard slides with normal height */
-#slide-3,
-#slide-4,
-#slide-5,
-#slide-6 {
-  align-items: flex-start;
-  padding-top: 2rem;
-}
-
-/* Special handling for content-heavy slides */
-#slide-2, /* Our Story */
-#slide-7, /* Success Stories */
-#slide-8, /* Impact Statistics */
-#slide-9, /* Website Features */
-#slide-10 /* Meet Our Team */ {
-  min-height: 140vh; /* Extra height for content-heavy slides */
+  align-items: center;
+  justify-content: center;
   padding: 4rem 2rem;
-  align-items: flex-start; /* Align content to top instead of center */
-  padding-top: 2rem; /* Ensure some top spacing */
   background: linear-gradient(
     135deg,
     var(--javanova-darker) 0%,
@@ -102,6 +517,17 @@ body {
   );
 }
 
+/* Standard slides with centered alignment */
+#slide-3,
+#slide-4,
+#slide-5,
+#slide-6 {
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+/* Enhanced slide content styling for specific slides */
 #slide-2 .slide-content,
 #slide-6 .slide-content,
 #slide-7 .slide-content,
@@ -109,15 +535,19 @@ body {
 #slide-9 .slide-content,
 #slide-10 .slide-content {
   padding: 2rem;
-  margin-top: 2rem; /* Add top margin for better positioning */
+  margin-top: 0;
   background: linear-gradient(
     135deg,
     var(--javanova-darker) 0%,
     var(--javanova-dark) 100%
   );
-  border-radius: 15px; /* Optional: adds rounded corners for better visual appeal */
+  border-radius: 15px;
 }
 
+/* =============================================================================
+   TYPOGRAPHY SYSTEM
+   ========================================================================== */
+/* Main heading styles with shared properties */
 .slide-content h1,
 .slide-content h2 {
   margin-bottom: 1.5rem;
@@ -125,6 +555,7 @@ body {
   line-height: 1.2;
 }
 
+/* Primary heading with gradient text effect */
 .slide-content h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   background: linear-gradient(
@@ -137,10 +568,12 @@ body {
   background-clip: text;
 }
 
+/* Secondary heading styling */
 .slide-content h2 {
   font-size: clamp(2rem, 4vw, 3rem);
 }
 
+/* Paragraph text with responsive sizing */
 .slide-content p {
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   line-height: 1.6;
@@ -148,11 +581,13 @@ body {
   margin: 0 auto;
 }
 
+/* Main title for hero sections */
 .main-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
 }
 
+/* Subtitle with accent color and spacing */
 .subtitle {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 300;
@@ -160,7 +595,10 @@ body {
   letter-spacing: 2px;
 }
 
-/* 3D Effect Elements */
+/* =============================================================================
+   3D CARD COMPONENTS
+   ========================================================================== */
+/* Floating card with 3D hover effects */
 .floating-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -172,39 +610,48 @@ body {
   transform-style: preserve-3d;
   transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  min-height: 300px;
 }
 
+/* Floating card hover state with 3D rotation */
 .floating-card:hover {
   transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
   box-shadow: 0 20px 40px var(--cosmic-glow);
 }
 
+/* JavaNova-themed floating card border */
 .java-nova .floating-card {
   border-left: 5px solid var(--javanova-orange);
 }
 
+/* Other content floating card border */
 .others .floating-card {
   border-left: 5px solid var(--javanova-purple);
 }
 
+/* Card title styling */
 .card-title {
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
+/* Card icon base styling */
 .card-icon {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
+/* JavaNova card icon color */
 .java-nova .card-icon {
   color: var(--javanova-orange);
 }
 
+/* Other content card icon color */
 .others .card-icon {
   color: var(--javanova-purple);
 }
 
+/* Step card with orange border and 3D effects */
 .step-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -217,16 +664,18 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Step card hover effect */
 .step-card:hover {
   transform: perspective(800px) rotateX(5deg) translateZ(15px);
   box-shadow: 0 15px 30px var(--cosmic-purple-glow);
 }
 
+/* Circular step number indicator */
 .step-number {
   width: 50px;
   height: 50px;
   background: var(--javanova-purple);
-  color: white;
+  color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -237,6 +686,7 @@ body {
   transform: translateZ(20px);
 }
 
+/* Graduate profile card */
 .graduate-card {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid var(--javanova-orange);
@@ -251,11 +701,13 @@ body {
   height: 100%;
 }
 
+/* Graduate card hover effect */
 .graduate-card:hover {
   transform: perspective(800px) rotateY(10deg) translateZ(15px);
   box-shadow: 0 15px 30px var(--cosmic-glow);
 }
 
+/* Graduate name styling */
 .graduate-name {
   font-weight: 700;
   font-size: 1.2rem;
@@ -264,18 +716,21 @@ body {
   transform: translateZ(20px);
 }
 
+/* Graduate role/position */
 .graduate-role {
   font-weight: 600;
   color: var(--javanova-purple);
   margin-bottom: 1rem;
 }
 
+/* Graduate description text */
 .graduate-description {
   font-size: 0.9rem;
   margin-bottom: 1rem;
   min-height: 80px;
 }
 
+/* Graduate profile links container */
 .graduate-links {
   display: flex;
   justify-content: center;
@@ -283,6 +738,7 @@ body {
   margin-top: 1rem;
 }
 
+/* Individual profile link styling */
 .profile-link {
   display: flex;
   align-items: center;
@@ -292,43 +748,18 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Profile link hover effect */
 .profile-link:hover {
-  color: white;
+  color: #fff;
   transform: translateY(-3px);
 }
 
+/* Profile link icon spacing */
 .profile-link i {
   margin-right: 5px;
 }
 
-.cta-button {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  background: linear-gradient(
-    45deg,
-    var(--javanova-orange),
-    var(--javanova-purple)
-  );
-  border: none;
-  border-radius: 50px;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: white;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 1rem;
-  transform: translateZ(0);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.cta-button:hover {
-  transform: scale(1.05) translateZ(10px);
-  box-shadow: 0 10px 25px var(--cosmic-glow);
-}
-
+/* Statistics card with purple border */
 .stat-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -342,11 +773,13 @@ body {
   height: 100%;
 }
 
+/* Statistics card hover effect */
 .stat-card:hover {
   transform: perspective(800px) rotateY(5deg) translateZ(15px);
   box-shadow: 0 10px 30px var(--cosmic-purple-glow);
 }
 
+/* Statistics icon styling */
 .stat-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -354,6 +787,7 @@ body {
   transform: translateZ(20px);
 }
 
+/* Large statistic number display */
 .stat-number {
   font-size: 2.5rem;
   font-weight: 800;
@@ -362,11 +796,13 @@ body {
   transform: translateZ(20px);
 }
 
+/* Statistics label text */
 .stat-label {
   font-size: 1.1rem;
-  color: white;
+  color: #fff;
 }
 
+/* Feature card with orange border */
 .feature-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -380,11 +816,13 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* Feature card hover effect */
 .feature-card:hover {
   transform: perspective(800px) rotateX(5deg) translateZ(15px);
   box-shadow: 0 15px 30px var(--cosmic-glow);
 }
 
+/* Feature icon with purple color */
 .feature-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -392,6 +830,7 @@ body {
   transform: translateZ(20px);
 }
 
+/* Team member card */
 .team-card {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
@@ -402,13 +841,17 @@ body {
   transform-style: preserve-3d;
   transform: perspective(800px) rotateY(0deg) translateZ(0);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  height: 100%;
 }
 
+/* Team card hover effect */
 .team-card:hover {
   transform: perspective(800px) rotateY(5deg) translateZ(15px);
   box-shadow: 0 15px 30px var(--cosmic-glow);
 }
 
+/* Team member photo/avatar */
 .team-photo {
   width: 120px;
   height: 120px;
@@ -426,6 +869,7 @@ body {
   box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
 }
 
+/* Team member name */
 .team-name {
   font-weight: 700;
   font-size: 1.3rem;
@@ -434,6 +878,7 @@ body {
   transform: translateZ(20px);
 }
 
+/* Team member role */
 .team-role {
   font-weight: 600;
   margin-bottom: 1rem;
@@ -441,12 +886,219 @@ body {
   transform: translateZ(20px);
 }
 
+/* Story section cards */
+.story-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 2px solid var(--javanova-orange);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateY(0deg) translateZ(0);
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Story card hover effect */
+.story-card:hover {
+  transform: perspective(800px) rotateY(5deg) translateZ(15px);
+  box-shadow: 0 15px 30px var(--cosmic-glow);
+}
+
+/* Story section icon */
+.story-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--javanova-orange);
+  transform: translateZ(20px);
+}
+
+/* Milestone timeline cards */
+.milestone-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border-left: 4px solid var(--javanova-orange);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+/* Milestone card hover effect */
+.milestone-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px var(--cosmic-purple-glow);
+}
+
+/* Milestone date display */
+.milestone-date {
+  font-weight: 600;
+  color: var(--javanova-orange);
+  margin-bottom: 0.5rem;
+}
+
+/* Milestone icon */
+.milestone-icon {
+  font-size: 2rem;
+  color: var(--javanova-purple);
+  margin-bottom: 1rem;
+}
+
+/* =============================================================================
+   INTERACTIVE ELEMENTS
+   ========================================================================== */
+/* Call-to-action button with gradient background */
+.cta-button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  background: linear-gradient(
+    45deg,
+    var(--javanova-orange),
+    var(--javanova-purple)
+  );
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 1rem;
+  transform: translateZ(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* CTA button hover effect */
+.cta-button:hover {
+  transform: scale(1.05) translateZ(10px);
+  box-shadow: 0 10px 25px var(--cosmic-glow);
+}
+
+/* Social media icons */
+.social-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid;
+  border-radius: 60%;
+  color: var(--javanova-orange);
+  font-size: 1.8rem;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+}
+
+/* Social icon hover effect */
+.social-icon:hover {
+  background: var(--javanova-orange);
+  color: #fff;
+  box-shadow: 0 0 15px var(--cosmic-glow);
+}
+
+/* Discord social icon */
+.discord {
+  color: #5865f2;
+}
+
+/* Discord hover state */
+.discord:hover {
+  background: #5865f2;
+}
+
+/* Telegram social icon */
+.telegram {
+  color: #0088cc;
+}
+
+/* Telegram hover state */
+.telegram:hover {
+  background: #0088cc;
+}
+
+/* LinkedIn social icon */
+.linkedin {
+  color: #0077b5;
+}
+
+/* LinkedIn hover state */
+.linkedin:hover {
+  background: #0077b5;
+}
+
+/* GitHub social icon */
+.github {
+  border-color: #333;
+}
+
+/* GitHub hover state */
+.github:hover {
+  background: #333;
+}
+
+/* =============================================================================
+   LAYOUT CONTAINERS
+   ========================================================================== */
+/* Thank you content wrapper */
 .thank-you-content {
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* Cosmic Background Elements */
+/* Statistics container layout */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 900px;
+}
+
+/* Individual statistic item */
+.stat-item {
+  flex: 1;
+  min-width: 200px;
+  max-width: 220px;
+}
+
+/* Success stories introduction section */
+.success-intro {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border-left: 4px solid var(--javanova-orange);
+}
+
+/* Story section layout */
+.story-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+/* Milestone grid layout */
+.milestone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* =============================================================================
+   BACKGROUND EFFECTS
+   ========================================================================== */
+/* Cosmic background container */
 .cosmic-background {
   position: absolute;
   top: 0;
@@ -457,6 +1109,7 @@ body {
   z-index: -1;
 }
 
+/* Animated stars background */
 .stars {
   position: absolute;
   width: 100%;
@@ -471,15 +1124,17 @@ body {
   animation: sparkle 3s linear infinite;
 }
 
+/* Stars animation keyframes */
 @keyframes sparkle {
   from {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   to {
     transform: translateY(-100px);
   }
 }
 
+/* Nova burst effect */
 .nova-burst {
   position: absolute;
   top: 30%;
@@ -497,6 +1152,7 @@ body {
   animation: pulse 2s ease-in-out infinite alternate;
 }
 
+/* Pulse animation keyframes */
 @keyframes pulse {
   from {
     transform: translate(-50%, -50%) scale(1);
@@ -508,7 +1164,10 @@ body {
   }
 }
 
-/* Navigation */
+/* =============================================================================
+   NAVIGATION SYSTEM
+   ========================================================================== */
+/* Navigation controls container */
 .navigation-controls {
   position: fixed;
   top: 50%;
@@ -521,6 +1180,7 @@ body {
   transform: translateY(-50%);
 }
 
+/* Navigation button styling */
 .nav-btn {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid var(--javanova-orange);
@@ -539,17 +1199,20 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Navigation button hover effect */
 .nav-btn:hover {
   background: var(--javanova-orange);
-  color: white;
+  color: #fff;
   transform: scale(1.1) translateZ(10px);
 }
 
+/* Disabled navigation button */
 .nav-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
 
+/* Slide indicators container */
 .slide-indicators {
   position: fixed;
   bottom: 2rem;
@@ -560,6 +1223,7 @@ body {
   z-index: 100;
 }
 
+/* Individual slide indicator */
 .indicator {
   width: 12px;
   height: 12px;
@@ -570,17 +1234,19 @@ body {
   transform: translateZ(0);
 }
 
+/* Active slide indicator */
 .indicator.active {
   background: var(--javanova-orange);
   transform: scale(1.2) translateZ(10px);
 }
 
+/* Slide counter display */
 .slide-counter {
   position: fixed;
   top: 2rem;
   right: 2rem;
   background: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 50px;
   font-weight: 600;
@@ -590,7 +1256,7 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Progress Bar */
+/* Progress bar container */
 .progress-container {
   position: fixed;
   top: 0;
@@ -601,6 +1267,7 @@ body {
   z-index: 100;
 }
 
+/* Progress bar fill */
 .progress-bar {
   height: 100%;
   background: linear-gradient(
@@ -608,11 +1275,14 @@ body {
     var(--javanova-orange),
     var(--javanova-purple)
   );
-  width: 0%;
+  width: 0;
   transition: width 0.3s ease;
 }
 
-/* Platform mockup */
+/* =============================================================================
+   WEBSITE MOCKUP COMPONENTS
+   ========================================================================== */
+/* Platform mockup container */
 .platform-mockup {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid var(--javanova-orange);
@@ -627,10 +1297,12 @@ body {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
+/* Platform mockup hover effect */
 .platform-mockup:hover {
   transform: perspective(800px) rotateY(5deg) translateZ(15px);
 }
 
+/* Browser bar mockup */
 .browser-bar {
   background: rgba(255, 255, 255, 0.2);
   height: 30px;
@@ -641,6 +1313,7 @@ body {
   transform: translateZ(20px);
 }
 
+/* Browser window control dots */
 .browser-dot {
   width: 12px;
   height: 12px;
@@ -648,16 +1321,22 @@ body {
   margin-right: 6px;
 }
 
+/* Red browser dot */
 .dot-red {
   background: #ff5f57;
 }
+
+/* Yellow browser dot */
 .dot-yellow {
   background: #ffbd2e;
 }
+
+/* Green browser dot */
 .dot-green {
   background: #28c940;
 }
 
+/* Website content area */
 .website-content {
   background: rgba(255, 255, 255, 0.1);
   height: 300px;
@@ -671,6 +1350,7 @@ body {
   transform: translateZ(10px);
 }
 
+/* Website grid layout */
 .website-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -679,6 +1359,7 @@ body {
   padding: 1rem;
 }
 
+/* Individual grid items */
 .grid-item {
   background: rgba(139, 92, 246, 0.2);
   border-radius: 8px;
@@ -691,82 +1372,31 @@ body {
   transform: translateZ(0);
 }
 
+/* Grid item hover effect */
 .grid-item:hover {
   transform: translateY(-5px) translateZ(10px);
   background: rgba(139, 92, 246, 0.4);
 }
 
-.grid-item:nth-child(1) {
-  grid-column: span 2;
-  height: 100px;
-}
+/* Large grid items spanning 2 columns */
+.grid-item:nth-child(1),
 .grid-item:nth-child(2) {
   grid-column: span 2;
   height: 100px;
 }
-.grid-item:nth-child(3) {
-  grid-column: span 1;
-}
-.grid-item:nth-child(4) {
-  grid-column: span 1;
-}
-.grid-item:nth-child(5) {
-  grid-column: span 1;
-}
+
+/* Small grid items spanning 1 column */
+.grid-item:nth-child(3),
+.grid-item:nth-child(4),
+.grid-item:nth-child(5),
 .grid-item:nth-child(6) {
   grid-column: span 1;
 }
 
-/* Social Media Icons */
-.social-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 50px;
-  height: 50px;
-  background: transparent;
-  border: 2px solid;
-  border-radius: 60%;
-  color: var(--javanova-orange);
-  font-size: 1.8rem;
-  margin: 0 10px;
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  background: var(--javanova-orange);
-  color: white;
-  box-shadow: 0 0 15px var(--cosmic-glow);
-}
-
-.discord {
-  color: #5865f2;
-}
-.discord:hover {
-  background: #5865f2;
-}
-
-.telegram {
-  color: #0088cc;
-}
-.telegram:hover {
-  background: #0088cc;
-}
-
-.linkedin {
-  color: #0077b5;
-}
-.linkedin:hover {
-  background: #0077b5;
-}
-
-.github {
-  border-color: #333;
-}
-.github:hover {
-  background: #333;
-}
-
-/* Bar Chart */
+/* =============================================================================
+   CHARTS AND VISUALIZATIONS
+   ========================================================================== */
+/* Chart container with 3D perspective */
 .chart-container {
   height: 300px;
   position: relative;
@@ -775,6 +1405,7 @@ body {
   perspective: 1000px;
 }
 
+/* 3D bar chart layout */
 .bar-chart {
   display: flex;
   justify-content: space-around;
@@ -785,6 +1416,7 @@ body {
   transform: rotateX(45deg);
 }
 
+/* Individual chart bars */
 .bar {
   width: 60px;
   background: linear-gradient(
@@ -799,6 +1431,7 @@ body {
   transform: translateZ(20px);
 }
 
+/* Bar chart labels */
 .bar-label {
   position: absolute;
   bottom: -30px;
@@ -809,6 +1442,7 @@ body {
   transform: translateZ(30px);
 }
 
+/* Bar chart values */
 .bar-value {
   position: absolute;
   top: -30px;
@@ -820,113 +1454,22 @@ body {
   transform: translateZ(30px);
 }
 
-/* New Statistics Section */
-.stats-container {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin: 2rem auto;
-  max-width: 900px;
-}
-
-.stat-item {
-  flex: 1;
-  min-width: 200px;
-  max-width: 220px;
-}
-
-/* Success Stories Intro */
-.success-intro {
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  border-left: 4px solid var(--javanova-orange);
-}
-
-/* Our Story Section - ENHANCED */
-.story-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.story-card {
-  flex: 1;
-  min-width: 300px;
-  max-width: 400px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  padding: 2rem;
-  border: 2px solid var(--javanova-orange);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  transform-style: preserve-3d;
-  transform: perspective(800px) rotateY(0deg) translateZ(0);
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.story-card:hover {
-  transform: perspective(800px) rotateY(5deg) translateZ(15px);
-  box-shadow: 0 15px 30px var(--cosmic-glow);
-}
-
-.story-icon {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--javanova-orange);
-  transform: translateZ(20px);
-}
-
-.milestone-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.milestone-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  padding: 1.5rem;
-  border-left: 4px solid var(--javanova-orange);
-  transition: all 0.3s ease;
-  text-align: left;
-}
-
-.milestone-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px var(--cosmic-purple-glow);
-}
-
-.milestone-date {
-  font-weight: 600;
-  color: var(--javanova-orange);
-  margin-bottom: 0.5rem;
-}
-
-.milestone-icon {
-  font-size: 2rem;
-  color: var(--javanova-purple);
-  margin-bottom: 1rem;
-}
-
-/* Equal height for step cards in Slide 4 */
+/* =============================================================================
+   EQUAL HEIGHT CARD LAYOUTS
+   ========================================================================== */
+/* Equal height cards for slide 4 */
 #slide-4 .row {
   display: flex;
   align-items: stretch;
 }
 
+/* Slide 4 column layout */
 #slide-4 .col-md-4 {
   display: flex;
   flex-direction: column;
 }
 
+/* Slide 4 step card height */
 #slide-4 .step-card {
   flex: 1 1 auto;
   height: 100%;
@@ -935,17 +1478,21 @@ body {
   justify-content: flex-start;
 }
 
-/* Equal height for cards in Slide 6 */
+/* Equal height cards for slide 6 */
 #slide-6 .row {
   display: flex;
   align-items: stretch;
 }
+
+/* Slide 6 column layouts */
 #slide-6 .col-md-3,
 #slide-6 .col-lg-3,
 #slide-6 .col-md-4 {
   display: flex;
   flex-direction: column;
 }
+
+/* Slide 6 step card height */
 #slide-6 .step-card {
   flex: 1 1 auto;
   height: 100%;
@@ -954,15 +1501,19 @@ body {
   justify-content: flex-start;
 }
 
-/* Equal height for cards in Slide 9 */
+/* Equal height cards for slide 9 */
 #slide-9 .row {
   display: flex;
   align-items: stretch;
 }
+
+/* Slide 9 column layout */
 #slide-9 .col-md-4 {
   display: flex;
   flex-direction: column;
 }
+
+/* Slide 9 feature card height */
 #slide-9 .feature-card {
   flex: 1 1 auto;
   height: 100%;
@@ -971,15 +1522,19 @@ body {
   justify-content: flex-start;
 }
 
-/* Equal height for cards in Slide 12 */
+/* Equal height cards for slide 12 */
 #slide-12 .row {
   display: flex;
   align-items: stretch;
 }
+
+/* Slide 12 column layout */
 #slide-12 .col-md-6 {
   display: flex;
   flex-direction: column;
 }
+
+/* Slide 12 feature card height */
 #slide-12 .feature-card {
   flex: 1 1 auto;
   height: 100%;
@@ -988,10 +1543,10 @@ body {
   justify-content: flex-start;
 }
 
-/* CUSTOM CURSOR CSS */
-* {
-  cursor: none;
-}
+/* =============================================================================
+   CUSTOM CURSOR SYSTEM
+   ========================================================================== */
+/* Base cursor and follower styles */
 .cursor,
 .cursor-follower {
   position: fixed;
@@ -1001,6 +1556,8 @@ body {
   transition: transform 0.05s ease, background 0.1s ease, border-color 0.1s ease,
     box-shadow 0.1s ease;
 }
+
+/* Main cursor element */
 .cursor {
   width: 20px;
   height: 20px;
@@ -1008,6 +1565,8 @@ body {
   background: var(--javanova-purple);
   box-shadow: 0 0 5px var(--javanova-purple), 0 0 10px var(--javanova-purple);
 }
+
+/* Cursor follower element */
 .cursor-follower {
   width: 40px;
   height: 40px;
@@ -1015,26 +1574,35 @@ body {
   border-radius: 50%;
 }
 
+/* Cursor hover state */
 .cursor.hover {
   transform: translate(-50%, -50%) scale(1.5);
   background: var(--javanova-orange);
   box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova-orange);
 }
+
+/* Cursor link state */
 .cursor.link {
   transform: translate(-50%, -50%) scale(1.2);
   background: var(--javanova-purple);
   box-shadow: 0 0 10px var(--javanova-purple), 0 0 20px var(--javanova-purple);
 }
+
+/* Cursor click state - fix undefined color variable */
 .cursor.click {
   transform: translate(-50%, -50%) scale(0.8);
-  background: var(--javanova-pink);
-  box-shadow: 0 0 10px var(--javanova-pink), 0 0 20px var(--javanova-pink);
+  background: var(--javanova-orange);
+  box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova-orange);
 }
+
+/* Cursor follower hover state */
 .cursor-follower.hover {
   width: 60px;
   height: 60px;
   border-color: rgba(255, 140, 66, 0.5);
 }
+
+/* Cursor follower link state */
 .cursor-follower.link {
   width: 50px;
   height: 50px;
@@ -1042,8 +1610,9 @@ body {
 }
 
 /* =============================================================================
-   Disable custom cursor on touch devices
+   RESPONSIVE DESIGN - TOUCH DEVICES
    ========================================================================== */
+/* Disable custom cursor on touch devices */
 @media (hover: none), (pointer: coarse) {
   .cursor,
   .cursor-follower {
@@ -1052,9 +1621,10 @@ body {
 }
 
 /* =============================================================================
-   Tablet & small-laptop (≤1200px)
+   RESPONSIVE DESIGN - TABLET & SMALL LAPTOP (≤1200px)
    ========================================================================== */
 @media (max-width: 1200px) {
+  /* Story and milestone grid adjustments */
   .story-section,
   .milestone-grid {
     display: grid;
@@ -1062,15 +1632,18 @@ body {
     gap: 1rem;
   }
 
+  /* Row layout adjustments */
   .slide-content > .row {
     flex-direction: column;
   }
 
+  /* Statistics container stacking */
   .stats-container {
     flex-direction: column;
     gap: 1rem;
   }
 
+  /* Card width normalization */
   .story-card,
   .feature-card,
   .milestone-card,
@@ -1083,18 +1656,23 @@ body {
 }
 
 /* =============================================================================
-   Mobile (≤768px)
+   RESPONSIVE DESIGN - MOBILE (≤768px)
    ========================================================================== */
 @media (max-width: 768px) {
+  /* Slide padding and height adjustments */
   .slide {
     padding: 2rem 1rem;
     min-height: 110vh;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Slide content padding */
   .slide-content {
     padding: 2rem 1rem;
   }
 
+  /* Content-heavy slides mobile adjustments - maintain center alignment */
   #slide-2,
   #slide-6,
   #slide-7,
@@ -1103,10 +1681,11 @@ body {
   #slide-10 {
     min-height: 130vh;
     padding: 3rem 1rem;
-    align-items: flex-start;
-    padding-top: 1rem;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Slide content mobile adjustments */
   #slide-2 .slide-content,
   #slide-6 .slide-content,
   #slide-7 .slide-content,
@@ -1114,19 +1693,23 @@ body {
   #slide-9 .slide-content,
   #slide-10 .slide-content {
     padding: 2rem 1rem;
-    margin-top: 1rem;
+    margin-top: 0;
   }
 
+  /* Typography scaling for mobile */
   .slide-content h1 {
     font-size: clamp(2rem, 6vw, 2.5rem);
   }
+
   .slide-content h2 {
     font-size: clamp(1.5rem, 5vw, 2rem);
   }
+
   .slide-content p {
     font-size: clamp(0.9rem, 4vw, 1.2rem);
   }
 
+  /* Navigation repositioning for mobile */
   .navigation-controls {
     top: auto;
     bottom: 1rem;
@@ -1135,14 +1718,18 @@ body {
 }
 
 /* =============================================================================
-   Phone (≤480px)
+   RESPONSIVE DESIGN - PHONE (≤480px)
    ========================================================================== */
 @media (max-width: 480px) {
+  /* Slide height and padding for phones */
   .slide {
     min-height: 105vh;
     padding: 1.5rem 1rem;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Content-heavy slides phone adjustments - maintain center alignment */
   #slide-2,
   #slide-6,
   #slide-7,
@@ -1151,10 +1738,11 @@ body {
   #slide-10 {
     min-height: 120vh;
     padding: 2rem 1rem;
-    align-items: flex-start;
-    padding-top: 1rem;
+    align-items: center;
+    justify-content: center;
   }
 
+  /* Slide content phone adjustments */
   #slide-2 .slide-content,
   #slide-6 .slide-content,
   #slide-7 .slide-content,
@@ -1162,12 +1750,15 @@ body {
   #slide-9 .slide-content,
   #slide-10 .slide-content {
     padding: 1.5rem 1rem;
-    margin-top: 1rem;
+    margin-top: 0;
   }
 
+  /* Title sizing for phones */
   .slide-title h1 {
     font-size: 1.5rem;
   }
+
+  /* CTA button phone adjustments */
   .cta-button {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
@@ -1176,34 +1767,43 @@ body {
     width: 90%;
   }
 
+  /* Disable cursor on phones */
   .cursor,
   .cursor-follower {
     display: none !important;
   }
 
+  /* Nova burst size adjustment */
   .nova-burst {
     width: 150px;
     height: 150px;
   }
 
+  /* Chart bar adjustments */
   .bar {
     width: 30px;
   }
+
+  /* Chart text sizing */
   .bar-label,
   .bar-value {
     font-size: 0.7rem;
   }
 
+  /* Website grid mobile layout */
   .website-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
     padding: 0.5rem;
   }
+
+  /* Grid item mobile sizing */
   .grid-item {
     height: 50px;
     font-size: 0.8rem;
   }
 
+  /* Team photo mobile sizing */
   .team-photo {
     width: 80px;
     height: 80px;
@@ -1211,3 +1811,276 @@ body {
   }
 }
 
+/* =============================================================================
+   COMPACT LAYOUTS FOR CONTENT-HEAVY SLIDES
+   ========================================================================== */
+/* Compact typography for content-heavy slides */
+#slide-2 .slide-content h1,
+#slide-4 .slide-content h1,
+#slide-7 .slide-content h1,
+#slide-8 .slide-content h1,
+#slide-9 .slide-content h1,
+#slide-10 .slide-content h1,
+#slide-12 .slide-content h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+/* Compact secondary headings for content-heavy slides */
+#slide-2 .slide-content h2,
+#slide-4 .slide-content h2,
+#slide-7 .slide-content h2,
+#slide-8 .slide-content h2,
+#slide-9 .slide-content h2,
+#slide-10 .slide-content h2,
+#slide-12 .slide-content h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 1rem;
+}
+
+/* Compact paragraph text for content-heavy slides */
+#slide-2 .slide-content p,
+#slide-4 .slide-content p,
+#slide-7 .slide-content p,
+#slide-8 .slide-content p,
+#slide-9 .slide-content p,
+#slide-10 .slide-content p,
+#slide-12 .slide-content p {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  line-height: 1.4;
+}
+
+/* Compact card layouts for content-heavy slides */
+#slide-2 .step-card,
+#slide-2 .story-card,
+#slide-2 .milestone-card,
+#slide-4 .step-card,
+#slide-7 .graduate-card,
+#slide-8 .stat-card,
+#slide-9 .feature-card,
+#slide-10 .team-card,
+#slide-12 .feature-card {
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Compact step numbers for slide 4 */
+#slide-4 .step-number {
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Compact card titles for content-heavy slides */
+#slide-2 .card-title,
+#slide-4 .card-title,
+#slide-7 .card-title,
+#slide-8 .card-title,
+#slide-9 .card-title,
+#slide-10 .card-title,
+#slide-12 .card-title {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Compact icons for content-heavy slides */
+#slide-2 .card-icon,
+#slide-2 .story-icon,
+#slide-2 .milestone-icon,
+#slide-4 .card-icon,
+#slide-8 .stat-icon,
+#slide-9 .feature-icon,
+#slide-12 .feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Compact statistic numbers for slide 8 */
+#slide-8 .stat-number {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Compact statistic labels for slide 8 */
+#slide-8 .stat-label {
+  font-size: 0.9rem;
+}
+
+/* Compact graduate card elements for slide 7 */
+#slide-7 .graduate-name {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+#slide-7 .graduate-role {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+#slide-7 .graduate-description {
+  font-size: 0.8rem;
+  min-height: 60px;
+  margin-bottom: 0.8rem;
+}
+
+#slide-7 .profile-link {
+  font-size: 0.75rem;
+}
+
+/* Compact team card elements for slide 10 */
+#slide-10 .team-photo {
+  width: 80px;
+  height: 80px;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+#slide-10 .team-name {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+#slide-10 .team-role {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Compact milestone elements for slide 2 */
+#slide-2 .milestone-date {
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+#slide-2 .milestone-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Compact story section layout for slide 2 */
+#slide-2 .story-section {
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+#slide-2 .story-card {
+  padding: 1.5rem;
+  min-width: 280px;
+  max-width: 350px;
+}
+
+/* Compact milestone grid for slide 2 */
+#slide-2 .milestone-grid {
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Compact statistics container for slide 8 */
+#slide-8 .stats-container {
+  gap: 1rem;
+  margin: 1.5rem auto;
+}
+
+#slide-8 .stat-item {
+  min-width: 150px;
+  max-width: 180px;
+}
+
+/* Compact success intro for slide 7 */
+#slide-7 .success-intro {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Fullscreen mode adjustments for compact slides */
+.fullscreen-mode #slide-2 .story-section,
+.fullscreen-mode #slide-8 .stats-container {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.fullscreen-mode #slide-10 .team-photo {
+  width: 100px;
+  height: 100px;
+  font-size: 2.5rem;
+}
+
+/* Responsive adjustments for compact layouts */
+@media (max-width: 768px) {
+  /* Even more compact for mobile on content-heavy slides */
+  #slide-2 .slide-content h1,
+  #slide-4 .slide-content h1,
+  #slide-7 .slide-content h1,
+  #slide-8 .slide-content h1,
+  #slide-9 .slide-content h1,
+  #slide-10 .slide-content h1,
+  #slide-12 .slide-content h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  #slide-2 .slide-content h2,
+  #slide-4 .slide-content h2,
+  #slide-7 .slide-content h2,
+  #slide-8 .slide-content h2,
+  #slide-9 .slide-content h2,
+  #slide-10 .slide-content h2,
+  #slide-12 .slide-content h2 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+  }
+
+  #slide-2 .step-card,
+  #slide-2 .story-card,
+  #slide-2 .milestone-card,
+  #slide-4 .step-card,
+  #slide-7 .graduate-card,
+  #slide-8 .stat-card,
+  #slide-9 .feature-card,
+  #slide-10 .team-card,
+  #slide-12 .feature-card {
+    padding: 0.8rem;
+  }
+
+  #slide-10 .team-photo {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ultra compact for phones on content-heavy slides */
+  #slide-2 .step-card,
+  #slide-2 .story-card,
+  #slide-2 .milestone-card,
+  #slide-4 .step-card,
+  #slide-7 .graduate-card,
+  #slide-8 .stat-card,
+  #slide-9 .feature-card,
+  #slide-10 .team-card,
+  #slide-12 .feature-card {
+    padding: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  #slide-4 .step-number {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  #slide-7 .graduate-description {
+    min-height: 40px;
+  }
+
+  #slide-10 .team-photo {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+
+#maram-container,
+#abdelrahman-container {
+  width: 350px; /* use Maram’s width */
+  height: 280px; /* use Maram’s height */
+}
