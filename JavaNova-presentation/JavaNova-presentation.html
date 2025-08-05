@@ -1,25 +1,29 @@
 <!DOCTYPE html>
+<!-- filepath: c:\Users\ahmed\Downloads\repo\JavaNova-project\JavaNova-presentation\JavaNova-presentation.html -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaNova Academy | Enhanced Presentation</title>
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- custom cursor -->
+    <!-- Custom Cursor Elements -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="cursor-follower"></div>
 
-    <!-- Slide 1: The Spark -->
+    <!-- Slide 1: Hero Section -->
     <section class="slide slide-title" id="slide-1">
       <div class="cosmic-background">
         <div class="stars"></div>
@@ -37,7 +41,7 @@
       </div>
     </section>
 
-    <!-- Slide 2: Our Story - ENHANCED -->
+    <!-- Slide 2: Our Story -->
     <section class="slide" id="slide-2">
       <div class="slide-content">
         <h2>Our Story</h2>
@@ -269,16 +273,21 @@
     <!-- Slide 7: Success Stories -->
     <section class="slide" id="slide-7">
       <div class="slide-content">
-        <h2>Real People, Real Success Stories</h2>
-        <div class="success-intro">
-          <p>
-            See what's possible with Java skills - real people building real
-            careers.
-          </p>
+        <div class="success-header">
+          <h2>Real People, Real Success Stories</h2>
+          <div class="success-intro">
+            <p>
+              See what's possible with Java skills - real people building real
+              careers.
+            </p>
+          </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-6 mb-4">
+        <!-- Added custom container for graduate cards -->
+        <div class="graduate-row-container">
+          <div
+            class="graduate-row d-flex flex-row flex-nowrap justify-content-center align-items-stretch gap-4"
+          >
             <div class="graduate-card">
               <div class="team-photo"><i class="fas fa-user-tie"></i></div>
               <div class="graduate-name">Mohamed Hassan</div>
@@ -306,8 +315,6 @@
                 </a>
               </div>
             </div>
-          </div>
-          <div class="col-md-6 mb-4">
             <div class="graduate-card">
               <div class="team-photo"><i class="fas fa-user-graduate"></i></div>
               <div class="graduate-name">Omar Yahya</div>
@@ -326,8 +333,6 @@
                 </a>
               </div>
             </div>
-          </div>
-          <div class="col-md-6 mb-4">
             <div class="graduate-card">
               <div class="team-photo"><i class="fas fa-laptop-code"></i></div>
               <div class="graduate-name">Mohamed Magdy</div>
@@ -348,8 +353,6 @@
                 </a>
               </div>
             </div>
-          </div>
-          <div class="col-md-6 mb-4">
             <div class="graduate-card">
               <div class="team-photo"><i class="fas fa-rocket"></i></div>
               <div class="graduate-name">Mahmoud Soliman</div>
@@ -499,7 +502,9 @@
               <div class="team-photo"><i class="fas fa-user"></i></div>
               <div class="team-name">Ahmed Elsayed</div>
               <div class="team-role">Design & Presentation Lead</div>
-              <p>Handles visual design, presentations, and brand consistency</p>
+              <p class="team-desc">
+                Handles visual design, presentations, and brand consistency
+              </p>
             </div>
           </div>
           <div class="col-md-4 mb-4">
@@ -507,7 +512,7 @@
               <div class="team-photo"><i class="fas fa-user"></i></div>
               <div class="team-name">Omar Atef</div>
               <div class="team-role">Java Research Specialist</div>
-              <p>
+              <p class="team-desc">
                 Researched Java market demand and beginner-friendly projects
               </p>
             </div>
@@ -517,7 +522,7 @@
               <div class="team-photo"><i class="fas fa-user"></i></div>
               <div class="team-name">Eriny Hany</div>
               <div class="team-role">Platform Strategy</div>
-              <p>
+              <p class="team-desc">
                 Developed platform differentiation strategy and success stories
               </p>
             </div>
@@ -529,7 +534,7 @@
               <div class="team-photo"><i class="fas fa-user"></i></div>
               <div class="team-name">Maram Saeed</div>
               <div class="team-role">Educational Methodology</div>
-              <p>
+              <p class="team-desc">
                 Designed learning materials structure and educational content
               </p>
             </div>
@@ -539,7 +544,9 @@
               <div class="team-photo"><i class="fas fa-user"></i></div>
               <div class="team-name">Abdelrahman Tarek</div>
               <div class="team-role">Founder & Vision Keeper</div>
-              <p>Academy founder, maintains mission and strategic direction</p>
+              <p class="team-desc">
+                Academy founder, maintains mission and strategic direction
+              </p>
             </div>
           </div>
         </div>
@@ -603,7 +610,7 @@
       </div>
     </section>
 
-    <!-- Slide 12: Thank You - UPDATED -->
+    <!-- Slide 12: Thank You -->
     <section class="slide" id="slide-12">
       <div class="slide-content">
         <div class="thank-you-content">
@@ -686,7 +693,7 @@
       </div>
     </section>
 
-    <!-- Navigation -->
+    <!-- Navigation Controls -->
     <div class="navigation-controls">
       <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
         <i class="fas fa-chevron-up"></i>
@@ -696,10 +703,10 @@
       </button>
     </div>
 
-    <!-- Slide indicators -->
+    <!-- Slide Indicators -->
     <div class="slide-indicators" id="slideIndicators"></div>
 
-    <!-- Slide counter -->
+    <!-- Slide Counter -->
     <div class="slide-counter">
       <span id="currentSlide">1</span> of <span id="totalSlides">12</span>
     </div>
@@ -709,7 +716,90 @@
       <div class="progress-bar" id="progressBar"></div>
     </div>
 
+    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Script -->
     <script src="script.js"></script>
+
+    <style>
+      /* Graduate Cards Layout for Slide 7 */
+      #slide-7 .slide-content {
+        max-width: 1600px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .graduate-row-container {
+        width: 100%;
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 1.5rem;
+        overflow-x: visible;
+        display: flex;
+        justify-content: center;
+      }
+      .graduate-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: 2rem;
+        width: 100%;
+        min-width: unset;
+      }
+      .graduate-card {
+        min-width: 320px;
+        max-width: 350px;
+        flex: 1 1 320px;
+      }
+      @media (max-width: 1600px) {
+        #slide-7 .slide-content,
+        .graduate-row-container {
+          max-width: 100vw;
+        }
+        .graduate-row {
+          flex-wrap: wrap;
+        }
+      }
+      @media (max-width: 1400px) {
+        .graduate-card {
+          min-width: 270px;
+        }
+      }
+      @media (max-width: 1200px) {
+        .graduate-card {
+          min-width: 220px;
+        }
+      }
+      @media (max-width: 900px) {
+        .graduate-row {
+          flex-direction: column !important;
+          flex-wrap: nowrap;
+        }
+        .graduate-card {
+          min-width: unset;
+          max-width: 100%;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      /* Success header: stack h2 and intro vertically, center them */
+      #slide-7 .success-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      #slide-7 .success-header h2 {
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+      #slide-7 .success-header .success-intro {
+        margin-bottom: 0;
+        text-align: center;
+      }
+    </style>
   </body>
 </html>

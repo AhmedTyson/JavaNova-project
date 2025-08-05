@@ -1,5 +1,9 @@
-/* =============================================================================
-   CSS CUSTOM PROPERTIES (VARIABLES)
+/* ============================================================================
+   JavaNova Presentation - Main Stylesheet
+   ========================================================================== */
+
+/* ============================================================================
+   Main Variables
    ========================================================================== */
 :root {
   --javanova-orange: #ff8c42;
@@ -8,11 +12,11 @@
   --javanova-darker: #0d0d1f;
   --cosmic-glow: rgba(255, 140, 66, 0.3);
   --cosmic-purple-glow: rgba(139, 92, 246, 0.3);
-  --vh: 1vh; /* Dynamic viewport height variable for F11 fixes */
+  --vh: 1vh; /* Viewport height variable for fullscreen mode */
 }
 
-/* =============================================================================
-   FULLSCREEN MODE OPTIMIZATION (F11 Support)
+/* ============================================================================
+   Fullscreen Mode Support
    ========================================================================== */
 /* Standard fullscreen styles */
 :fullscreen {
@@ -21,6 +25,8 @@
   margin: 0 !important;
   padding: 0 !important;
   overflow: auto !important;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 /* Browser-specific fullscreen prefixes */
@@ -131,8 +137,8 @@ body.fullscreen-mode {
   margin: 2rem auto;
 }
 
-/* =============================================================================
-   LARGE SCREEN MEDIA QUERIES (Laptop Fullscreen Support)
+/* ============================================================================
+   Large Screen Media Queries
    ========================================================================== */
 /* Full HD and larger laptops (1920px+) */
 @media screen and (min-width: 1920px) {
@@ -402,8 +408,8 @@ body.fullscreen-mode {
   animation-duration: 3s;
 }
 
-/* =============================================================================
-   FALLBACK STYLES FOR LIMITED FULLSCREEN SUPPORT
+/* ============================================================================
+   Fallback Styles for Limited Fullscreen Support
    ========================================================================== */
 @supports not (selector(:fullscreen)) {
   .fullscreen-fallback {
@@ -430,8 +436,8 @@ body.fullscreen-mode {
   }
 }
 
-/* =============================================================================
-   GLOBAL RESET AND BASE STYLES
+/* ============================================================================
+   Global Reset & Base Styles
    ========================================================================== */
 /* Universal reset with custom cursor */
 * {
@@ -457,8 +463,8 @@ body {
   overscroll-behavior: contain;
 }
 
-/* =============================================================================
-   SLIDE LAYOUT SYSTEM
+/* ============================================================================
+   Slide Layout System
    ========================================================================== */
 /* Main slide container with scroll snap */
 .slide {
@@ -544,8 +550,8 @@ body {
   border-radius: 15px;
 }
 
-/* =============================================================================
-   TYPOGRAPHY SYSTEM
+/* ============================================================================
+   Typography System
    ========================================================================== */
 /* Main heading styles with shared properties */
 .slide-content h1,
@@ -595,8 +601,8 @@ body {
   letter-spacing: 2px;
 }
 
-/* =============================================================================
-   3D CARD COMPONENTS
+/* ============================================================================
+   3D Card Components
    ========================================================================== */
 /* Floating card with 3D hover effects */
 .floating-card {
@@ -886,6 +892,13 @@ body {
   transform: translateZ(20px);
 }
 
+.team-desc {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0;
+  opacity: 0.85;
+}
+
 /* Story section cards */
 .story-card {
   flex: 1;
@@ -947,8 +960,8 @@ body {
   margin-bottom: 1rem;
 }
 
-/* =============================================================================
-   INTERACTIVE ELEMENTS
+/* ============================================================================
+   Interactive Elements
    ========================================================================== */
 /* Call-to-action button with gradient background */
 .cta-button {
@@ -1042,8 +1055,8 @@ body {
   background: #333;
 }
 
-/* =============================================================================
-   LAYOUT CONTAINERS
+/* ============================================================================
+   Layout Containers
    ========================================================================== */
 /* Thank you content wrapper */
 .thank-you-content {
@@ -1095,8 +1108,8 @@ body {
   margin-top: 2rem;
 }
 
-/* =============================================================================
-   BACKGROUND EFFECTS
+/* ============================================================================
+   Background Effects
    ========================================================================== */
 /* Cosmic background container */
 .cosmic-background {
@@ -1164,8 +1177,8 @@ body {
   }
 }
 
-/* =============================================================================
-   NAVIGATION SYSTEM
+/* ============================================================================
+   Navigation System
    ========================================================================== */
 /* Navigation controls container */
 .navigation-controls {
@@ -1279,8 +1292,8 @@ body {
   transition: width 0.3s ease;
 }
 
-/* =============================================================================
-   WEBSITE MOCKUP COMPONENTS
+/* ============================================================================
+   Website Mockup Components
    ========================================================================== */
 /* Platform mockup container */
 .platform-mockup {
@@ -1393,8 +1406,8 @@ body {
   grid-column: span 1;
 }
 
-/* =============================================================================
-   CHARTS AND VISUALIZATIONS
+/* ============================================================================
+   Charts & Visualizations
    ========================================================================== */
 /* Chart container with 3D perspective */
 .chart-container {
@@ -1454,8 +1467,8 @@ body {
   transform: translateZ(30px);
 }
 
-/* =============================================================================
-   EQUAL HEIGHT CARD LAYOUTS
+/* ============================================================================
+   Equal Height Card Layouts
    ========================================================================== */
 /* Equal height cards for slide 4 */
 #slide-4 .row {
@@ -1543,8 +1556,8 @@ body {
   justify-content: flex-start;
 }
 
-/* =============================================================================
-   CUSTOM CURSOR SYSTEM
+/* ============================================================================
+   Custom Cursor System
    ========================================================================== */
 /* Base cursor and follower styles */
 .cursor,
@@ -1578,7 +1591,7 @@ body {
 .cursor.hover {
   transform: translate(-50%, -50%) scale(1.5);
   background: var(--javanova-orange);
-  box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova-orange);
+  box-shadow: 0 0 10px var(--javanova.orange), 0 0 20px var(--javanova.orange);
 }
 
 /* Cursor link state */
@@ -1592,7 +1605,7 @@ body {
 .cursor.click {
   transform: translate(-50%, -50%) scale(0.8);
   background: var(--javanova-orange);
-  box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova-orange);
+  box-shadow: 0 0 10px var(--javanova-orange), 0 0 20px var(--javanova.orange);
 }
 
 /* Cursor follower hover state */
@@ -1609,8 +1622,8 @@ body {
   border-color: rgba(106, 13, 173, 0.5);
 }
 
-/* =============================================================================
-   RESPONSIVE DESIGN - TOUCH DEVICES
+/* ============================================================================
+   Responsive Design - Touch Devices
    ========================================================================== */
 /* Disable custom cursor on touch devices */
 @media (hover: none), (pointer: coarse) {
@@ -1620,8 +1633,8 @@ body {
   }
 }
 
-/* =============================================================================
-   RESPONSIVE DESIGN - TABLET & SMALL LAPTOP (≤1200px)
+/* ============================================================================
+   Responsive Design - Tablet & Small Laptop (≤1200px)
    ========================================================================== */
 @media (max-width: 1200px) {
   /* Story and milestone grid adjustments */
@@ -1655,8 +1668,8 @@ body {
   }
 }
 
-/* =============================================================================
-   RESPONSIVE DESIGN - MOBILE (≤768px)
+/* ============================================================================
+   Responsive Design - Mobile (≤768px)
    ========================================================================== */
 @media (max-width: 768px) {
   /* Slide padding and height adjustments */
@@ -1717,8 +1730,8 @@ body {
   }
 }
 
-/* =============================================================================
-   RESPONSIVE DESIGN - PHONE (≤480px)
+/* ============================================================================
+   Responsive Design - Phone (≤480px)
    ========================================================================== */
 @media (max-width: 480px) {
   /* Slide height and padding for phones */
@@ -1811,8 +1824,8 @@ body {
   }
 }
 
-/* =============================================================================
-   COMPACT LAYOUTS FOR CONTENT-HEAVY SLIDES
+/* ============================================================================
+   Compact Layouts for Content-Heavy Slides
    ========================================================================== */
 /* Compact typography for content-heavy slides */
 #slide-2 .slide-content h1,
@@ -2079,8 +2092,40 @@ body {
   }
 }
 
-#maram-container,
-#abdelrahman-container {
-  width: 350px; /* use Maram’s width */
-  height: 280px; /* use Maram’s height */
+/* ============================================================================
+   Scrollbar Customization
+   ========================================================================== */
+/* Hide scrollbars but allow scrolling (recommended for fullscreen/f11 only) */
+:fullscreen,
+:-webkit-full-screen,
+:-moz-full-screen,
+:-ms-fullscreen,
+.f11-detected {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+:fullscreen::-webkit-scrollbar,
+:-webkit-full-screen::-webkit-scrollbar,
+:-moz-full-screen::-webkit-scrollbar,
+:-ms-fullscreen::-webkit-scrollbar,
+.f11-detected::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Optionally, to hide scrollbars for the whole body in all browsers but keep scrolling: */
+/*
+body {
+  scrollbar-width: none;        // Firefox
+  -ms-overflow-style: none;     // IE and Edge
+}
+body::-webkit-scrollbar {
+  display: none;                // Chrome, Safari, Opera
+}
+*/
+
+/* Team Member Containers */
+#educational-lead-container,
+#founder-container {
+  width: 350px; /* container width */
+  height: 280px; /* container height */
 }
