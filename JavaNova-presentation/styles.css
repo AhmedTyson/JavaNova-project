@@ -2092,40 +2092,27 @@ body {
   }
 }
 
-/* ============================================================================
-   Scrollbar Customization
-   ========================================================================== */
-/* Hide scrollbars but allow scrolling (recommended for fullscreen/f11 only) */
-:fullscreen,
-:-webkit-full-screen,
-:-moz-full-screen,
-:-ms-fullscreen,
-.f11-detected {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+/* Minimize content size for Slide 7 */
+#slide-7 .slide-content {
+  max-width: 80vw;
+  padding: 1rem 0.5rem;
 }
-:fullscreen::-webkit-scrollbar,
-:-webkit-full-screen::-webkit-scrollbar,
-:-moz-full-screen::-webkit-scrollbar,
-:-ms-fullscreen::-webkit-scrollbar,
-.f11-detected::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+#slide-7 .graduate-card {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+#slide-7 .graduate-name {
+  font-size: 1rem;
+}
+#slide-7 .graduate-role {
+  font-size: 0.9rem;
+}
+#slide-7 .graduate-description {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+#slide-7 .profile-link {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
 }
 
-/* Optionally, to hide scrollbars for the whole body in all browsers but keep scrolling: */
-/*
-body {
-  scrollbar-width: none;        // Firefox
-  -ms-overflow-style: none;     // IE and Edge
-}
-body::-webkit-scrollbar {
-  display: none;                // Chrome, Safari, Opera
-}
-*/
-
-/* Team Member Containers */
-#educational-lead-container,
-#founder-container {
-  width: 350px; /* container width */
-  height: 280px; /* container height */
-}
