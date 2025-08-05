@@ -2079,8 +2079,32 @@ body {
   }
 }
 
+/* Minimize content size for Slide 7 */
+#slide-7 .slide-content {
+  max-width: 80vw;
+  padding: 1rem 0.5rem;
+}
+#slide-7 .graduate-card {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+#slide-7 .graduate-name {
+  font-size: 1rem;
+}
+#slide-7 .graduate-role {
+  font-size: 0.9rem;
+}
+#slide-7 .graduate-description {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+#slide-7 .profile-link {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
 #maram-container,
 #abdelrahman-container {
-  width: 350px; /* use Maram’s width */
-  height: 280px; /* use Maram’s height */
+  width: 350px; 
+  height: 280px; 
 }
