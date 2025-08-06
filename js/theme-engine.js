@@ -291,5 +291,3 @@ if (document.readyState === "loading") {
 }
 
 console.log("📄 JavaNova Enhanced Theme Engine script loaded");
-
-

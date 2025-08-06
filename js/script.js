@@ -1,3 +1,5 @@
+const DEBUG = false; // set to true if you need logs
+
 /**
  * JavaNova Academy - ENHANCED Application Script
  *
@@ -20,6 +22,7 @@ const JavaNovaApp = {
     currentCharIndex: 0,
     isDeleting: false,
     cursorInterval: null, // ← add this
+    ticking: false,
   },
 
   // ENHANCED: Typing texts
@@ -152,28 +155,37 @@ const JavaNovaApp = {
 
   // Navigation functionality
   // Update in script.js
-initNavigation() {
-  const navLinks = document.querySelectorAll(".navbar-nav .nav-link, .mobile-nav-link");
-  
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const href = link.getAttribute("href");
-      console.log("🔗 Nav link clicked:", href);
-      this.scrollToSection(href);
+  initNavigation() {
+    const navLinks = document.querySelectorAll(
+      ".navbar-nav .nav-link, .mobile-nav-link"
+    );
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        console.log("🔗 Nav link clicked:", href);
+        this.scrollToSection(href);
+      });
     });
-  });
 
-  // Update active nav on scroll
-  window.addEventListener(
-    "scroll",
-    this.throttle(() => {
-      this.updateActiveNav();
-    }, 100)
-  );
+    // use rAF + passive for scroll
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!this.state.ticking) {
+          this.state.ticking = true;
+          requestAnimationFrame(() => {
+            this.updateActiveNav();
+            this.state.ticking = false;
+          });
+        }
+      },
+      { passive: true }
+    );
 
-  console.log("✅ Navigation initialized");
-},
+    DEBUG && console.log("✅ Navigation initialized");
+  },
 
   scrollToSection(targetId) {
     const target = document.querySelector(targetId);
@@ -189,32 +201,34 @@ initNavigation() {
   },
 
   // Update sections list
-updateActiveNav() {
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".navbar-nav .nav-link, .mobile-nav-link");
-  const scrollPos = window.scrollY + 150;
+  updateActiveNav() {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(
+      ".navbar-nav .nav-link, .mobile-nav-link"
+    );
+    const scrollPos = window.scrollY + 150;
 
-  let currentSection = "";
+    let currentSection = "";
 
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
 
-    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-      currentSection = section.id;
-    }
-  });
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        currentSection = section.id;
+      }
+    });
 
     // Update active link
-  navLinks.forEach((link) => {
-    const href = link.getAttribute("href");
-    if (href === "#" + currentSection) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
-  });
-},
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href === "#" + currentSection) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  },
 
   // ENHANCED: Typing animation with proper cursor
   initEnhancedTypingAnimation() {
@@ -284,7 +298,9 @@ updateActiveNav() {
     // Start the enhanced typing animation
     typeWriter();
 
-    console.log("✅ Enhanced typing animation initialized");
+    // ensure we clear intervals on unload
+    window.addEventListener("beforeunload", () => this.clearCursorBlink());
+    DEBUG && console.log("✅ Enhanced typing animation initialized");
   },
 
   // Optionally, if you want to clear the cursor interval when switching pages or stopping animation:
@@ -314,23 +330,20 @@ updateActiveNav() {
       });
     });
 
-    console.log("✅ Course filtering initialized");
+    DEBUG && console.log("✅ Course filtering initialized");
   },
 
   filterCourses(filter) {
-    const courseItems = document.querySelectorAll(".course-item");
-    courseItems.forEach((item) => {
-      const level = item.dataset.level;
-      const shouldShow = filter === "all" || level === filter;
-
-      // let Bootstrap grid decide layout, so clear any inline display override
-      item.style.display = shouldShow ? "" : "none";
-      // if you still want a fade, you can toggle a CSS class with a transition on opacity
-      item.style.opacity = shouldShow ? "1" : "0";
+    const items = document.querySelectorAll(".course-item");
+    items.forEach((item) => {
+      const show = filter === "all" || item.dataset.level === filter;
+      // batch this toggle in the same frame
+      requestAnimationFrame(() => {
+        item.classList.toggle("d-none", !show);
+      });
     });
-
     this.state.currentFilter = filter;
-    console.log("🔍 Courses filtered by:", filter);
+    DEBUG && console.log("🔍 Courses filtered by:", filter);
   },
 
   updateActiveFilter(activeButton) {
